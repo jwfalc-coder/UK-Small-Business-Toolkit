@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free UK Invoice Generator 2025 | UK Small Business Toolkit</title>
+  <meta name="description" content="Create professional UK invoices with automatic VAT calculation and PDF export. Includes late payment interest calculator and all statutory VAT invoice requirements.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/invoice-generator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Free UK Invoice Generator 2025 | UK Small Business Toolkit">
+  <meta property="og:description" content="Create professional UK invoices with VAT and PDF export.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://YOURDOMAIN/" },
+      { "@type": "ListItem", "position": 2, "name": "VAT & Invoicing", "item": "https://YOURDOMAIN/#vat-invoicing" },
+      { "@type": "ListItem", "position": 3, "name": "Invoice Generator" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg>
+        </div>
+        <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>
+    </div>
+    <div class="hero-text">
+      <nav class="breadcrumb" style="margin-bottom:8px;">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <a href="index.html#vat-invoicing">VAT &amp; Invoicing</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <span class="breadcrumb-current">Invoice Generator</span>
+      </nav>
+      <h1>Free UK Invoice Generator 2025</h1>
+      <p>Create professional UK invoices with automatic VAT calculation. Fill in your details, add line items, then print or save as a PDF. Meets all statutory requirements for VAT invoices.</p>
+      <div class="hero-meta">
+        <span class="hero-badge">VAT &amp; Invoicing</span>
+        <span class="hero-badge slate">Free, no sign-up</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-main">
+
+        <div class="card" id="inputs-card">
+          <div class="card-title">Invoice details</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="from-name">Your business name</label>
+              <input type="text" id="from-name" class="form-input" placeholder="Acme Consulting Ltd">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="from-address">Your address</label>
+              <textarea id="from-address" class="form-input" rows="3" placeholder="123 High Street&#10;London&#10;EC1A 1BB"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="from-vat">Your VAT number (if registered)</label>
+              <input type="text" id="from-vat" class="form-input" placeholder="GB 123 4567 89">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="from-company-no">Companies House number (if Ltd)</label>
+              <input type="text" id="from-company-no" class="form-input" placeholder="12345678">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="to-name">Client name</label>
+              <input type="text" id="to-name" class="form-input" placeholder="Client Company Ltd">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="to-address">Client address</label>
+              <textarea id="to-address" class="form-input" rows="3" placeholder="456 Business Park&#10;Manchester&#10;M1 1AA"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="invoice-number">Invoice number</label>
+              <input type="text" id="invoice-number" class="form-input" placeholder="INV-001">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="invoice-date">Invoice date</label>
+              <input type="date" id="invoice-date" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="payment-terms">Payment terms</label>
+              <select id="payment-terms" class="form-select">
+                <option value="14">14 days</option>
+                <option value="30" selected>30 days</option>
+                <option value="60">60 days</option>
+                <option value="0">Due on receipt</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vat-rate-inv">Default VAT rate</label>
+              <select id="vat-rate-inv" class="form-select">
+                <option value="20">20% Standard</option>
+                <option value="5">5% Reduced</option>
+                <option value="0">0% / No VAT</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-24">
+          <div class="card-title">Line items</div>
+          <div class="table-wrap">
+            <table class="data-table" id="line-items-table">
+              <thead>
+                <tr>
+                  <th style="min-width:200px;">Description</th>
+                  <th style="width:80px;">Qty</th>
+                  <th style="width:110px;">Unit price (&#163;)</th>
+                  <th style="width:80px;">VAT %</th>
+                  <th style="width:100px;">Total</th>
+                  <th style="width:40px;"></th>
+                </tr>
+              </thead>
+              <tbody id="line-items-body">
+              </tbody>
+            </table>
+          </div>
+          <button class="btn btn--secondary mt-16" onclick="addLine()">+ Add line item</button>
+        </div>
+
+        <div class="card mt-24" id="totals-card">
+          <div class="card-title">Totals</div>
+          <div class="calc-breakdown">
+            <div class="calc-row"><span>Subtotal (exc. VAT)</span><span id="inv-subtotal">&#163;0.00</span></div>
+            <div class="calc-row text-amber"><span>VAT</span><span id="inv-vat">&#163;0.00</span></div>
+            <div class="calc-row calc-row--total"><span>Total due</span><span id="inv-total">&#163;0.00</span></div>
+          </div>
+        </div>
+
+        <div class="card mt-24">
+          <div class="card-title">Notes / payment details</div>
+          <textarea id="invoice-notes" class="form-input" rows="3" placeholder="Bank: Barclays&#10;Sort code: 20-00-00&#10;Account: 12345678&#10;Reference: Please quote invoice number when paying"></textarea>
+        </div>
+
+        <div class="btn-group mt-16">
+          <button class="btn btn--primary" onclick="previewInvoice()">Preview invoice</button>
+          <button class="btn btn--secondary" onclick="clearInvoice()">Clear all</button>
+        </div>
+
+        <div id="invoice-preview" class="hidden mt-24">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div class="card-title" style="margin:0;">Invoice preview</div>
+              <button class="btn btn--primary" onclick="window.print()">Print / Save as PDF</button>
+            </div>
+            <div id="invoice-render" class="invoice-render"></div>
+          </div>
+        </div>
+
+        <div class="card mt-24">
+          <div class="card-title">Late payment interest calculator</div>
+          <p class="text-sm text-muted mb-16">Under the Late Payment of Commercial Debts Act, you can charge statutory interest on overdue B2B invoices at the Bank of England base rate plus 8%.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lp-amount">Invoice amount (&#163;)</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="lp-amount" class="form-input input-with-prefix" placeholder="5000" min="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lp-days">Days overdue</label>
+              <input type="number" id="lp-days" class="form-input" placeholder="30" min="1">
+            </div>
+          </div>
+          <button class="btn btn--primary" onclick="calcLatePayment()">Calculate interest</button>
+          <div id="lp-result" class="hidden mt-16">
+            <div class="results-grid results-grid--3">
+              <div class="result-card">
+                <div class="result-label">Statutory rate</div>
+                <div class="result-value" id="lp-rate">--</div>
+              </div>
+              <div class="result-card">
+                <div class="result-label">Interest claimable</div>
+                <div class="result-value text-amber" id="lp-interest">--</div>
+              </div>
+              <div class="result-card result-card--highlight">
+                <div class="result-label">Total claimable</div>
+                <div class="result-value" id="lp-total">--</div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-8">Current statutory interest rate: Bank of England base rate (4.75%) plus 8% = <strong>12.75%</strong> per annum. You may also add a fixed debt recovery cost of &#163;40, &#163;70, or &#163;100 depending on invoice value.</p>
+          </div>
+        </div>
+
+        <div class="disclaimer mt-24">
+          Invoices generated here are not stored anywhere. Results are for guidance only. Not legal or financial advice. Ensure your invoices meet your specific legal requirements.
+        </div>
+
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="card card--compact">
+          <div class="card-title">VAT invoice requirements</div>
+          <p class="text-sm text-muted">A valid VAT invoice must include: a sequential invoice number, the tax point date, your VAT number, a description of goods or services, the net amount, the VAT rate and amount, and the gross total. Missing any of these may mean your client cannot reclaim the VAT.</p>
+        </div>
+
+        <div class="card card--compact">
+          <div class="card-title">Saving as PDF</div>
+          <p class="text-sm text-muted">Click "Print / Save as PDF" then choose "Save as PDF" as the destination in your print dialog. On Chrome and Edge, this gives a clean PDF with no browser UI elements.</p>
+        </div>
+
+        <div class="card card--compact">
+          <div class="card-title">Related tools</div>
+          <a href="vat-calculator.html" class="sidebar-link">VAT Calculator</a>
+          <a href="vat-return-calculator.html" class="sidebar-link">VAT Return Calculator</a>
+          <a href="flat-rate-scheme-calculator.html" class="sidebar-link">Flat Rate Scheme Calculator</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <section class="related-tools">
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="vat-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div class="related-title">VAT Calculator</div>
+          <div class="related-desc">Add or remove VAT at 20%, 5%, or 0%</div>
+        </a>
+        <a href="vat-return-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+          <div class="related-title">VAT Return Calculator</div>
+          <div class="related-desc">Box-by-box VAT100 guide and deadlines</div>
+        </a>
+        <a href="flat-rate-scheme-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="related-title">Flat Rate Scheme Calculator</div>
+          <div class="related-desc">Compare FRS versus standard VAT</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<style>
+@media print {
+  .site-header, .page-hero, .tool-sidebar, .related-tools, .site-footer, .mobile-nav, #inputs-card, #line-items-table ~ *, .card:not(:has(#invoice-render)), button, .btn, .disclaimer { display: none !important; }
+  #invoice-preview { display: block !important; }
+  .invoice-render { padding: 0; }
+  body { background: white; }
+}
+.invoice-render { font-family: var(--font-body); color: var(--text-primary); }
+.inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid var(--accent); }
+.inv-title { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--accent); }
+.inv-meta { font-size: 13px; line-height: 1.8; }
+.inv-parties { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.inv-party h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; }
+.inv-party p { font-size: 13px; line-height: 1.7; white-space: pre-line; }
+.inv-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 13px; }
+.inv-table th { text-align: left; padding: 8px 10px; background: var(--bg-subtle); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+.inv-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.inv-totals { margin-left: auto; width: 280px; }
+.inv-totals-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; }
+.inv-totals-row.total { font-weight: 700; font-size: 15px; border-top: 2px solid var(--accent); padding-top: 10px; margin-top: 4px; color: var(--accent); }
+.inv-notes { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; white-space: pre-line; color: var(--text-secondary); }
+</style>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+          <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+        </a>
+        <p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tax &amp; Finance</h4>
+        <a href="corporation-tax-calculator.html">Corporation Tax</a>
+        <a href="ltd-company-cost-calculator.html">Ltd Company Costs</a>
+        <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a>
+        <a href="business-mileage-calculator.html">Business Mileage</a>
+        <a href="capital-allowances-calculator.html">Capital Allowances</a>
+      </div>
+      <div class="footer-col">
+        <h4>VAT &amp; Invoicing</h4>
+        <a href="vat-calculator.html">VAT Calculator</a>
+        <a href="vat-return-calculator.html">VAT Return</a>
+        <a href="invoice-generator.html">Invoice Generator</a>
+        <a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a>
+      </div>
+      <div class="footer-col">
+        <h4>Compliance</h4>
+        <a href="companies-house-deadlines.html">CH Deadlines</a>
+        <a href="mtd-checker.html">MTD Checker</a>
+        <a href="break-even-calculator.html">Break-Even</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span>
+      <div style="display:flex;gap:16px;">
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <a href="index.html" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="corporation-tax-calculator.html" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>
+      Tax
+    </a>
+    <a href="vat-calculator.html" class="mobile-nav-link active">
+      <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      VAT
+    </a>
+    <a href="companies-house-deadlines.html" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Deadlines
+    </a>
+    <a href="contact.html" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Contact
+    </a>
+  </div>
+</nav>
+
+<script src="utils.js"></script>
+<script>
+  let lineItems = [];
+
+  // Set today's date as default
+  document.getElementById('invoice-date').value = new Date().toISOString().split('T')[0];
+
+  // Start with 2 blank lines
+  addLine();
+  addLine();
+
+  function addLine() {
+    const defaultVat = document.getElementById('vat-rate-inv').value;
+    lineItems.push({ desc: '', qty: 1, price: 0, vat: parseFloat(defaultVat) });
+    renderLines();
+  }
+
+  function removeLine(idx) {
+    lineItems.splice(idx, 1);
+    renderLines();
+  }
+
+  function renderLines() {
+    const tbody = document.getElementById('line-items-body');
+    tbody.innerHTML = '';
+    lineItems.forEach((item, i) => {
+      const lineTotal = item.qty * item.price * (1 + item.vat / 100);
+      const row = document.createElement('tr');
+      row.innerHTML =
+        '<td><input type="text" class="form-input form-input--sm" value="' + escHtml(item.desc) + '" placeholder="Service description" oninput="updateLine(' + i + ', 'desc', this.value)"></td>' +
+        '<td><input type="number" class="form-input form-input--sm" value="' + item.qty + '" min="0" step="0.01" oninput="updateLine(' + i + ', 'qty', parseFloat(this.value)||0)"></td>' +
+        '<td><input type="number" class="form-input form-input--sm" value="' + item.price + '" min="0" step="0.01" oninput="updateLine(' + i + ', 'price', parseFloat(this.value)||0)"></td>' +
+        '<td><select class="form-select form-select--sm" onchange="updateLine(' + i + ', 'vat', parseFloat(this.value))"><option value="20"' + (item.vat===20?' selected':'') + '>20%</option><option value="5"' + (item.vat===5?' selected':'') + '>5%</option><option value="0"' + (item.vat===0?' selected':'') + '>0%</option></select></td>' +
+        '<td>&#163;' + lineTotal.toFixed(2) + '</td>' +
+        '<td><button class="btn-icon" onclick="removeLine(' + i + ')" title="Remove">&#10005;</button></td>';
+      tbody.appendChild(row);
+    });
+    updateTotals();
+  }
+
+  function updateLine(idx, field, value) {
+    lineItems[idx][field] = value;
+    updateTotals();
+  }
+
+  function updateTotals() {
+    let subtotal = 0, vatTotal = 0;
+    lineItems.forEach(item => {
+      const net = item.qty * item.price;
+      subtotal += net;
+      vatTotal += net * (item.vat / 100);
+    });
+    document.getElementById('inv-subtotal').textContent = fmt.currency(subtotal);
+    document.getElementById('inv-vat').textContent = fmt.currency(vatTotal);
+    document.getElementById('inv-total').textContent = fmt.currency(subtotal + vatTotal);
+  }
+
+  function escHtml(s) {
+    return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function previewInvoice() {
+    const invoiceDate = document.getElementById('invoice-date').value;
+    const terms = parseInt(document.getElementById('payment-terms').value) || 30;
+    let dueDate = '';
+    if (invoiceDate) {
+      const d = new Date(invoiceDate);
+      d.setDate(d.getDate() + terms);
+      dueDate = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    const invDateFmt = invoiceDate ? new Date(invoiceDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+
+    let subtotal = 0, vatTotal = 0;
+    let linesHtml = '';
+    lineItems.forEach(item => {
+      if (!item.desc && !item.price) return;
+      const net = item.qty * item.price;
+      const vatAmt = net * (item.vat / 100);
+      const gross = net + vatAmt;
+      subtotal += net;
+      vatTotal += vatAmt;
+      linesHtml += '<tr><td>' + escHtml(item.desc) + '</td><td style="text-align:right;">' + Number(item.qty).toLocaleString('en-GB', {maximumFractionDigits:2}) + '</td><td style="text-align:right;">&#163;' + item.price.toFixed(2) + '</td><td style="text-align:right;">' + item.vat + '%</td><td style="text-align:right;">&#163;' + gross.toFixed(2) + '</td></tr>';
+    });
+    const total = subtotal + vatTotal;
+
+    const fromVat = document.getElementById('from-vat').value.trim();
+    const fromCoNo = document.getElementById('from-company-no').value.trim();
+    let fromExtra = '';
+    if (fromVat) fromExtra += '<br>VAT No: ' + escHtml(fromVat);
+    if (fromCoNo) fromExtra += '<br>Company No: ' + escHtml(fromCoNo);
+
+    const render = document.getElementById('invoice-render');
+    render.innerHTML =
+      '<div class="inv-header">' +
+        '<div class="inv-title">INVOICE</div>' +
+        '<div class="inv-meta" style="text-align:right;">' +
+          '<strong>' + escHtml(document.getElementById('invoice-number').value || 'INV-001') + '</strong><br>' +
+          'Date: ' + invDateFmt + '<br>' +
+          'Due: ' + dueDate +
+        '</div>' +
+      '</div>' +
+      '<div class="inv-parties">' +
+        '<div class="inv-party"><h4>From</h4><p><strong>' + escHtml(document.getElementById('from-name').value) + '</strong><br>' + escHtml(document.getElementById('from-address').value).replace(/\n/g,'<br>') + fromExtra + '</p></div>' +
+        '<div class="inv-party"><h4>To</h4><p><strong>' + escHtml(document.getElementById('to-name').value) + '</strong><br>' + escHtml(document.getElementById('to-address').value).replace(/\n/g,'<br>') + '</p></div>' +
+      '</div>' +
+      '<table class="inv-table">' +
+        '<thead><tr><th>Description</th><th style="text-align:right;">Qty</th><th style="text-align:right;">Unit price</th><th style="text-align:right;">VAT</th><th style="text-align:right;">Amount</th></tr></thead>' +
+        '<tbody>' + linesHtml + '</tbody>' +
+      '</table>' +
+      '<div class="inv-totals">' +
+        '<div class="inv-totals-row"><span>Subtotal (exc. VAT)</span><span>&#163;' + subtotal.toFixed(2) + '</span></div>' +
+        '<div class="inv-totals-row"><span>VAT</span><span>&#163;' + vatTotal.toFixed(2) + '</span></div>' +
+        '<div class="inv-totals-row total"><span>Total due</span><span>&#163;' + total.toFixed(2) + '</span></div>' +
+      '</div>' +
+      (document.getElementById('invoice-notes').value ? '<div class="inv-notes"><strong>Payment details:</strong><br>' + escHtml(document.getElementById('invoice-notes').value) + '</div>' : '');
+
+    UI.show('invoice-preview');
+    document.getElementById('invoice-preview').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function clearInvoice() {
+    lineItems = [];
+    addLine();
+    addLine();
+    ['from-name','from-address','from-vat','from-company-no','to-name','to-address','invoice-number','invoice-notes'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    document.getElementById('invoice-date').value = new Date().toISOString().split('T')[0];
+    UI.hide('invoice-preview');
+  }
+
+  function calcLatePayment() {
+    const amount = UI.numVal('lp-amount', 0);
+    const days = UI.numVal('lp-days', 0);
+    if (amount <= 0 || days <= 0) { alert('Please enter an invoice amount and number of days overdue.'); return; }
+    const result = LatePayment.calculate(amount, days);
+    UI.setText('lp-rate', result.rate + '%');
+    UI.setText('lp-interest', fmt.currency(result.interest));
+    UI.setText('lp-total', fmt.currency(result.total));
+    UI.show('lp-result');
+  }
+</script>
+</body>
+</html>
