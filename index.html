@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Small Business Toolkit — Free Calculators for UK Business Owners</title>
+  <meta name="description" content="18 free tools for UK limited company directors, sole traders, and freelancers. Corporation tax, VAT, payroll, Companies House deadlines, invoicing and more.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="UK Small Business Toolkit — Free Calculators for UK Business Owners">
+  <meta property="og:description" content="18 free tools for UK limited company directors, sole traders, and freelancers. Corporation tax, VAT, payroll, Companies House deadlines, invoicing and more.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "UK Small Business Toolkit",
+    "description": "Free calculators and compliance tools for UK small businesses",
+    "url": "https://YOURDOMAIN/"
+  }
+  </script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg>
+        </div>
+        <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="home-hero">
+  <div class="container">
+    <h1>Free tools for <em>UK business owners</em></h1>
+    <p>18 calculators covering tax, VAT, payroll, compliance, and profitability. Built for limited company directors, sole traders, and freelancers.</p>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="tool-search" placeholder="Search tools, e.g. corporation tax, VAT, mileage..." oninput="filterTools(this.value)" autocomplete="off">
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">18</div><div class="hero-stat-label">free tools</div></div>
+      <div class="hero-sep"></div>
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">categories</div></div>
+      <div class="hero-sep"></div>
+      <div class="hero-stat"><div class="hero-stat-num">2025/26</div><div class="hero-stat-label">rates</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT TOP -->
+<!-- <div class="container" style="margin-top:24px;"><div class="ad-slot ad-slot--leaderboard"></div></div> -->
+
+<main>
+  <div class="container">
+
+    <!-- NOTICE: MTD -->
+    <div class="alert alert--warning mt-24" style="margin-bottom:32px;">
+      <span class="alert-icon">&#9888;</span>
+      <div>
+        <strong>Making Tax Digital for Income Tax launched April 2026.</strong>
+        If your self-employment or property income exceeds £50,000, you are now required to keep digital records and submit quarterly updates to HMRC.
+        <a href="mtd-checker.html">Check if you are affected</a>
+      </div>
+    </div>
+
+    <!-- NO RESULTS MESSAGE -->
+    <div id="no-results" class="hidden" style="text-align:center;padding:40px 0;">
+      <p style="font-size:1.1rem;color:var(--text-muted);">No tools match your search. Try different keywords.</p>
+      <button class="btn btn--secondary btn--sm" onclick="clearSearch()">Clear search</button>
+    </div>
+
+    <!-- CATEGORY 1: COMPANY TAX & FINANCE -->
+    <section class="category-section" id="tax-finance" data-category="Company Tax &amp; Finance">
+      <div class="category-header">
+        <div class="category-icon amber">&#128200;</div>
+        <h2 class="category-label">Company Tax &amp; Finance</h2>
+        <span class="category-count">5 tools</span>
+      </div>
+      <div class="tools-grid">
+
+        <a href="corporation-tax-calculator.html" class="tool-card" data-name="corporation tax calculator profit ct marginal relief" data-category="company tax finance">
+          <div class="tool-card-icon">&#128181;</div>
+          <div class="tool-card-title">Corporation Tax Calculator</div>
+          <div class="tool-card-desc">Calculate your CT bill at 19%, 25%, or marginal relief for 2025/26. Includes effective rate chart and marginal relief workings.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="ltd-company-cost-calculator.html" class="tool-card" data-name="ltd limited company cost annual running overhead accountancy" data-category="company tax finance">
+          <div class="tool-card-icon">&#127970;</div>
+          <div class="tool-card-title">Ltd Company Cost Calculator</div>
+          <div class="tool-card-desc">The true annual cost of running a limited company — accountancy fees, Companies House, payroll, banking, employer NI, and more.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="sole-trader-vs-ltd.html" class="tool-card" data-name="sole trader vs ltd limited company comparison net take home tax saving" data-category="company tax finance">
+          <div class="tool-card-icon">&#9878;</div>
+          <div class="tool-card-title">Sole Trader vs Ltd Company</div>
+          <div class="tool-card-desc">Side-by-side net take-home comparison. Find the profit level at which incorporation becomes tax-beneficial for your situation.</div>
+          <div class="tool-card-arrow">Compare <span>&#8594;</span></div>
+        </a>
+
+        <a href="business-mileage-calculator.html" class="tool-card" data-name="mileage hmrc approved rate car motorcycle bicycle tax relief" data-category="company tax finance">
+          <div class="tool-card-icon">&#128663;</div>
+          <div class="tool-card-title">Business Mileage Calculator</div>
+          <div class="tool-card-desc">HMRC approved mileage allowance payments for cars, motorcycles, and bicycles. Includes tax relief and VAT reclaim for VAT-registered businesses.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="capital-allowances-calculator.html" class="tool-card" data-name="capital allowances aia annual investment allowance full expensing wda plant machinery" data-category="company tax finance">
+          <div class="tool-card-icon">&#128187;</div>
+          <div class="tool-card-title">Capital Allowances Calculator</div>
+          <div class="tool-card-desc">AIA, full expensing, first-year allowances, and writing down allowances. See your tax relief amount for any business asset purchase.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 2: VAT & INVOICING -->
+    <section class="category-section" id="vat-invoicing" data-category="VAT &amp; Invoicing">
+      <div class="category-header">
+        <div class="category-icon blue">&#128196;</div>
+        <h2 class="category-label">VAT &amp; Invoicing</h2>
+        <span class="category-count">4 tools</span>
+      </div>
+      <div class="tools-grid">
+
+        <a href="vat-calculator.html" class="tool-card" data-name="vat calculator add remove 20% 5% standard reduced flat rate scheme" data-category="vat invoicing">
+          <div class="tool-card-icon">&#43;</div>
+          <div class="tool-card-title">VAT Calculator</div>
+          <div class="tool-card-desc">Add or remove VAT at 20%, 5%, or 0% instantly. Flat Rate Scheme percentage lookup for all HMRC trade sectors.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="vat-return-calculator.html" class="tool-card" data-name="vat return box output input tax payable reclaimable mtd deadline" data-category="vat invoicing">
+          <div class="tool-card-icon">&#128203;</div>
+          <div class="tool-card-title">VAT Return Calculator</div>
+          <div class="tool-card-desc">Output vs input VAT, net payable or reclaimable, box-by-box guide to your VAT100 return, and MTD quarterly deadline calculator.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="invoice-generator.html" class="tool-card" data-name="invoice generator uk free pdf export vat invoice professional" data-category="vat invoicing">
+          <div class="tool-card-icon">&#128195;</div>
+          <div class="tool-card-title">Invoice Generator</div>
+          <div class="tool-card-desc">Create professional UK VAT invoices with PDF export. Includes all statutory requirements, automatic VAT calculation, and late payment interest.</div>
+          <div class="tool-card-arrow">Create invoice <span>&#8594;</span></div>
+        </a>
+
+        <a href="flat-rate-scheme-calculator.html" class="tool-card" data-name="flat rate scheme frs vat calculator is it worth it sector percentage" data-category="vat invoicing">
+          <div class="tool-card-icon">&#8525;</div>
+          <div class="tool-card-title">Flat Rate Scheme Calculator</div>
+          <div class="tool-card-desc">Is the VAT Flat Rate Scheme worth it for your business? Compare FRS vs standard VAT including the limited cost trader check.</div>
+          <div class="tool-card-arrow">Compare <span>&#8594;</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 3: COMPANIES HOUSE & COMPLIANCE -->
+    <section class="category-section" id="compliance" data-category="Companies House &amp; Compliance">
+      <div class="category-header">
+        <div class="category-icon green">&#128197;</div>
+        <h2 class="category-label">Companies House &amp; Compliance</h2>
+        <span class="category-count">4 tools</span>
+      </div>
+      <div class="tools-grid">
+
+        <a href="companies-house-deadlines.html" class="tool-card" data-name="companies house deadlines accounts confirmation statement ct600 filing dates" data-category="compliance">
+          <div class="tool-card-icon">&#128197;</div>
+          <div class="tool-card-title">Companies House Deadline Tracker</div>
+          <div class="tool-card-desc">Enter your incorporation date and year-end. Get all your Companies House and HMRC deadlines with days remaining and colour-coded urgency.</div>
+          <div class="tool-card-arrow">Track deadlines <span>&#8594;</span></div>
+        </a>
+
+        <a href="late-filing-penalty-calculator.html" class="tool-card" data-name="late filing penalty companies house accounts fine cost interest" data-category="compliance">
+          <div class="tool-card-icon">&#128308;</div>
+          <div class="tool-card-title">Late Filing Penalty Calculator</div>
+          <div class="tool-card-desc">Annual accounts penalties from £150 to £1,500 (doubled for consecutive late years). Plus corporation tax late payment interest.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="mtd-checker.html" class="tool-card" data-name="making tax digital mtd income tax checker am i affected itsa vat" data-category="compliance">
+          <div class="tool-card-icon">&#128241;</div>
+          <div class="tool-card-title">Making Tax Digital Checker</div>
+          <div class="tool-card-desc">Am I affected by MTD? Check your obligations for MTD for VAT and MTD for Income Tax (ITSA) with quarterly deadline calculator.</div>
+          <div class="tool-card-arrow">Check now <span>&#8594;</span></div>
+        </a>
+
+        <a href="business-structure-guide.html" class="tool-card" data-name="business structure sole trader limited company llp partnership comparison guide" data-category="compliance">
+          <div class="tool-card-icon">&#127970;</div>
+          <div class="tool-card-title">Business Structure Comparison</div>
+          <div class="tool-card-desc">Sole trader, partnership, LLP, or limited company? Interactive comparison with guided questionnaire and personalised recommendation.</div>
+          <div class="tool-card-arrow">Compare <span>&#8594;</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 4: PAYROLL & EMPLOYMENT -->
+    <section class="category-section" id="payroll" data-category="Payroll &amp; Employment">
+      <div class="category-header">
+        <div class="category-icon purple">&#128104;</div>
+        <h2 class="category-label">Payroll &amp; Employment</h2>
+        <span class="category-count">3 tools</span>
+      </div>
+      <div class="tools-grid">
+
+        <a href="statutory-pay-calculator.html" class="tool-card" data-name="statutory sick pay ssp maternity smp paternity spp calculator" data-category="payroll employment">
+          <div class="tool-card-icon">&#127973;</div>
+          <div class="tool-card-title">Statutory Pay Calculator</div>
+          <div class="tool-card-desc">SSP, SMP, SPP, and Shared Parental Pay. Calculate weekly amounts, total entitlement, and employer rebate amounts for small employers.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="national-living-wage-checker.html" class="tool-card" data-name="national living wage nlw nmw minimum wage checker compliance 2025" data-category="payroll employment">
+          <div class="tool-card-icon">&#9989;</div>
+          <div class="tool-card-title">National Living Wage Checker</div>
+          <div class="tool-card-desc">Check if you are paying at least the National Living Wage or National Minimum Wage for the worker's age. Includes employer NI and pension on-costs.</div>
+          <div class="tool-card-arrow">Check compliance <span>&#8594;</span></div>
+        </a>
+
+        <a href="director-loan-calculator.html" class="tool-card" data-name="director loan account s455 tax beneficial loan bik repayment" data-category="payroll employment">
+          <div class="tool-card-icon">&#128176;</div>
+          <div class="tool-card-title">Director Loan Account Calculator</div>
+          <div class="tool-card-desc">S455 tax on overdrawn director loans, beneficial loan benefit-in-kind, repayment deadlines, and HMRC refund timing.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 5: PRICING & PROFITABILITY -->
+    <section class="category-section" id="profitability" data-category="Pricing &amp; Profitability">
+      <div class="category-header">
+        <div class="category-icon amber">&#128200;</div>
+        <h2 class="category-label">Pricing &amp; Profitability</h2>
+        <span class="category-count">2 tools</span>
+      </div>
+      <div class="tools-grid">
+
+        <a href="break-even-calculator.html" class="tool-card" data-name="break even calculator fixed variable cost selling price revenue units" data-category="profitability">
+          <div class="tool-card-icon">&#9878;</div>
+          <div class="tool-card-title">Break-Even Calculator</div>
+          <div class="tool-card-desc">Find the number of units you need to sell to cover your costs. Includes contribution margin, break-even revenue, and profit/loss chart.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+        <a href="profit-margin-calculator.html" class="tool-card" data-name="profit margin gross net markup calculator industry benchmark" data-category="profitability">
+          <div class="tool-card-icon">&#128200;</div>
+          <div class="tool-card-title">Profit Margin Calculator</div>
+          <div class="tool-card-desc">Gross margin, net margin, and markup from revenue and costs. Compare your margins against UK industry benchmarks.</div>
+          <div class="tool-card-arrow">Calculate <span>&#8594;</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- AD SLOT BOTTOM -->
+    <!-- <div class="ad-slot ad-slot--bottom"></div> -->
+
+    <!-- TRUST ROW -->
+    <div style="background:var(--bg-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;">
+      <div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:0.95rem;margin-bottom:6px;color:var(--text-primary);">Always up to date</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);">Rates updated for 2025/26 including April 2025 employer NI changes and MTD for Income Tax.</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:0.95rem;margin-bottom:6px;color:var(--text-primary);">Nothing to install</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);">All calculations run in your browser. No account required, no data sent to any server.</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:0.95rem;margin-bottom:6px;color:var(--text-primary);">Guidance, not advice</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);">These tools provide estimates for planning purposes. Always consult a qualified accountant for your specific situation.</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+          <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+        </a>
+        <p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners. Rates updated for 2025/26.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tax &amp; Finance</h4>
+        <a href="corporation-tax-calculator.html">Corporation Tax</a>
+        <a href="ltd-company-cost-calculator.html">Ltd Company Costs</a>
+        <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a>
+        <a href="business-mileage-calculator.html">Business Mileage</a>
+        <a href="capital-allowances-calculator.html">Capital Allowances</a>
+      </div>
+      <div class="footer-col">
+        <h4>VAT &amp; Invoicing</h4>
+        <a href="vat-calculator.html">VAT Calculator</a>
+        <a href="vat-return-calculator.html">VAT Return</a>
+        <a href="invoice-generator.html">Invoice Generator</a>
+        <a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a>
+      </div>
+      <div class="footer-col">
+        <h4>Compliance &amp; Payroll</h4>
+        <a href="companies-house-deadlines.html">CH Deadlines</a>
+        <a href="late-filing-penalty-calculator.html">Late Filing Penalties</a>
+        <a href="mtd-checker.html">MTD Checker</a>
+        <a href="statutory-pay-calculator.html">Statutory Pay</a>
+        <a href="national-living-wage-checker.html">NLW Checker</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 UK Small Business Toolkit. For guidance only — not professional advice.</span>
+      <div style="display:flex;gap:16px;">
+        <a href="privacy.html">Privacy</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <a href="index.html" class="mobile-nav-link active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="#tax-finance" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Tax
+    </a>
+    <a href="#vat-invoicing" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      VAT
+    </a>
+    <a href="#compliance" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Deadlines
+    </a>
+    <a href="#payroll" class="mobile-nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      Payroll
+    </a>
+  </div>
+</nav>
+
+<script>
+function filterTools(query) {
+  const q = query.toLowerCase().trim();
+  const cards = document.querySelectorAll('.tool-card');
+  const sections = document.querySelectorAll('.category-section');
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const name = (card.dataset.name || '').toLowerCase();
+    const cat = (card.dataset.category || '').toLowerCase();
+    const title = (card.querySelector('.tool-card-title') || {}).textContent || '';
+    const desc = (card.querySelector('.tool-card-desc') || {}).textContent || '';
+    const match = !q || name.includes(q) || cat.includes(q) || title.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
+    card.style.display = match ? '' : 'none';
+    if (match) anyVisible = true;
+  });
+
+  sections.forEach(sec => {
+    const visible = Array.from(sec.querySelectorAll('.tool-card')).some(c => c.style.display !== 'none');
+    sec.style.display = visible ? '' : 'none';
+  });
+
+  const noRes = document.getElementById('no-results');
+  if (noRes) noRes.classList.toggle('hidden', anyVisible || !q);
+}
+
+function clearSearch() {
+  const input = document.getElementById('tool-search');
+  if (input) { input.value = ''; filterTools(''); }
+}
+</script>
+</body>
+</html>
