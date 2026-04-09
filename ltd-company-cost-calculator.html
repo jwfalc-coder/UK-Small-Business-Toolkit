@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ltd Company Cost Calculator 2025/26 | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate the true annual cost of running a UK limited company. Accountancy fees, Companies House, employer NI, payroll, insurance, banking and more.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/ltd-company-cost-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"Company Tax & Finance","item":"https://YOURDOMAIN/#tax-finance"},{"@type":"ListItem","position":3,"name":"Ltd Company Cost Calculator"}]}
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container"><div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <div class="logo-mark"><svg viewBox="0 0 20 20"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+      <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+    </a>
+    <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+    </button>
+  </div></div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-icon">&#127970;</div>
+    <div class="hero-text">
+      <nav class="breadcrumb" style="margin-bottom:8px;">
+        <a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span>
+        <a href="index.html#tax-finance">Company Tax &amp; Finance</a><span class="breadcrumb-sep">&#8250;</span>
+        <span class="breadcrumb-current">Ltd Company Cost Calculator</span>
+      </nav>
+      <h1>Ltd Company Cost Calculator 2025/26</h1>
+      <p>Calculate the true annual overhead of running a limited company, and compare it with the cost of operating as a sole trader.</p>
+      <div class="hero-meta">
+        <span class="hero-badge">Company Tax &amp; Finance</span>
+        <span class="hero-badge slate">Updated for 2025/26</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-main">
+        <div class="card">
+          <div class="card-title">Your limited company details</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="director-salary">Director salary <span class="hint">Annual gross</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="director-salary" value="12570" min="0" oninput="calculate()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="num-employees">Other employees <span class="hint">Exclude director</span></label>
+              <input type="number" id="num-employees" value="0" min="0" oninput="calculate()">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="avg-employee-salary">Average employee salary</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="avg-employee-salary" value="30000" min="0" oninput="calculate()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="annual-turnover">Annual turnover</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="annual-turnover" value="100000" min="0" oninput="calculate()">
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider">
+          <div class="card-title" style="border:none;padding:0;margin-bottom:16px;">Overhead costs</div>
+          <p class="text-sm text-muted mb-16">Adjust to match your actual or estimated costs. Defaults are typical UK averages.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountancy">Accountancy fees <span class="hint">Annual</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="accountancy" value="1200" min="0" oninput="calculate()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="payroll-software">Payroll software <span class="hint">Annual subscription</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="payroll-software" value="120" min="0" oninput="calculate()">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bank-account">Business bank account <span class="hint">Annual fees</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="bank-account" value="120" min="0" oninput="calculate()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reg-office">Registered office service <span class="hint">Annual</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="reg-office" value="60" min="0" oninput="calculate()">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="insurance">Professional indemnity &amp; liability insurance</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="insurance" value="400" min="0" oninput="calculate()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="other-costs">Other overhead costs <span class="hint">Software, subscriptions, etc.</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="other-costs" value="0" min="0" oninput="calculate()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="results-section" class="hidden mt-24">
+          <div class="stat-grid">
+            <div class="stat-card stat-card--accent">
+              <div class="stat-value" id="total-cost">--</div>
+              <div class="stat-label">Total annual overhead</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="monthly-cost">--</div>
+              <div class="stat-label">Monthly equivalent</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="pct-turnover">--</div>
+              <div class="stat-label">% of turnover</div>
+            </div>
+            <div class="stat-card stat-card--slate">
+              <div class="stat-value" id="employer-ni-total">--</div>
+              <div class="stat-label">Employer NI total</div>
+            </div>
+          </div>
+
+          <div class="results-panel mt-16">
+            <div class="results-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.7"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <h3>Annual overhead breakdown</h3>
+            </div>
+            <div class="results-body">
+              <div class="result-row">
+                <span class="result-label">Employer NI (director salary)</span>
+                <span class="result-value" id="r-dir-ni">--</span>
+              </div>
+              <div class="result-row" id="r-emp-row">
+                <span class="result-label">Employer NI (other employees)</span>
+                <span class="result-value" id="r-emp-ni">--</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Companies House confirmation statement</span>
+                <span class="result-value">&#163;34</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Companies House annual accounts filing</span>
+                <span class="result-value">&#163;0 <span class="text-muted text-xs">(online)</span></span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Accountancy fees</span>
+                <span class="result-value" id="r-accountancy">--</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Payroll software</span>
+                <span class="result-value" id="r-payroll">--</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Business bank account</span>
+                <span class="result-value" id="r-bank">--</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Registered office service</span>
+                <span class="result-value" id="r-regoffice">--</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Insurance</span>
+                <span class="result-value" id="r-insurance">--</span>
+              </div>
+              <div class="result-row" id="r-other-row">
+                <span class="result-label">Other overhead</span>
+                <span class="result-value" id="r-other">--</span>
+              </div>
+              <div class="result-row result-row--total">
+                <span class="result-label">Total annual overhead</span>
+                <span class="result-value" id="r-total">--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert--info mt-24">
+            <span class="alert-icon">&#8505;</span>
+            <div>
+              <strong>Sole trader comparison:</strong> A sole trader pays no Companies House fees, no employer NI, and has much lower accountancy costs (typically £300 to £600/year). The additional overhead of ltd company status needs to be justified by the tax savings from incorporating.
+              Use the <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd Company Calculator</a> to find your break-even profit point.
+            </div>
+          </div>
+
+          <div class="disclaimer">
+            Employer NI rates from April 2025: 15% on earnings above £5,000 per employee per year. Companies House fees are current as of 2025. Accountancy fee defaults are national averages and will vary. Not financial or legal advice.
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-sidebar">
+        <!-- <div class="ad-slot ad-slot--sidebar"></div> -->
+        <div class="card card--compact">
+          <div class="card-title">Employer NI 2025/26</div>
+          <p class="text-sm text-muted">From April 2025, employer NI is charged at <strong>15%</strong> on earnings above <strong>&#163;5,000</strong> per employee per year (down from £9,100).</p>
+          <p class="text-sm text-muted mt-8">The Employment Allowance of <strong>&#163;10,500</strong> is available to eligible employers to offset their employer NI bill.</p>
+        </div>
+        <div class="card card--compact">
+          <div class="card-title">Related tools</div>
+          <a href="sole-trader-vs-ltd.html" class="related-card" style="display:block;margin-bottom:8px;">
+            <div class="related-card-title">Sole Trader vs Ltd Company</div>
+            <div class="related-card-cat">Compare net take-home</div>
+          </a>
+          <a href="corporation-tax-calculator.html" class="related-card" style="display:block;">
+            <div class="related-card-title">Corporation Tax Calculator</div>
+            <div class="related-card-cat">Calculate your CT bill</div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+        <p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p>
+      </div>
+      <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a></div>
+      <div class="footer-col"><h4>VAT &amp; Compliance</h4><a href="vat-calculator.html">VAT Calculator</a><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a></div>
+      <div class="footer-col"><h4>Site</h4><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div>
+  </div>
+</footer>
+
+<nav class="mobile-nav"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+function calculate() {
+  const dirSalary = UI.numVal('director-salary', 0);
+  const numEmp = UI.numVal('num-employees', 0);
+  const empSalary = UI.numVal('avg-employee-salary', 0);
+  const turnover = UI.numVal('annual-turnover', 0);
+  const accountancy = UI.numVal('accountancy', 0);
+  const payroll = UI.numVal('payroll-software', 0);
+  const bank = UI.numVal('bank-account', 0);
+  const regOffice = UI.numVal('reg-office', 0);
+  const insurance = UI.numVal('insurance', 0);
+  const other = UI.numVal('other-costs', 0);
+
+  const dirNI = IT.employerNI(dirSalary);
+  const empNI = numEmp > 0 ? IT.employerNI(empSalary) * numEmp : 0;
+  const totalNI = fmt.round2(dirNI + empNI);
+
+  const CH_CONFIRMATION = 34;
+  const CH_ACCOUNTS = 0;
+
+  const total = fmt.round2(totalNI + CH_CONFIRMATION + CH_ACCOUNTS + accountancy + payroll + bank + regOffice + insurance + other);
+  const monthly = fmt.round2(total / 12);
+  const pct = turnover > 0 ? fmt.round2((total / turnover) * 100) : 0;
+
+  UI.setText('total-cost', fmt.currency(total));
+  UI.setText('monthly-cost', fmt.currency(monthly));
+  UI.setText('pct-turnover', fmt.pct(pct));
+  UI.setText('employer-ni-total', fmt.currency(totalNI));
+
+  UI.setText('r-dir-ni', fmt.currency(dirNI));
+  UI.setText('r-emp-ni', fmt.currency(empNI));
+  document.getElementById('r-emp-row').style.display = numEmp > 0 ? '' : 'none';
+  UI.setText('r-accountancy', fmt.currency(accountancy));
+  UI.setText('r-payroll', fmt.currency(payroll));
+  UI.setText('r-bank', fmt.currency(bank));
+  UI.setText('r-regoffice', fmt.currency(regOffice));
+  UI.setText('r-insurance', fmt.currency(insurance));
+  UI.setText('r-other', fmt.currency(other));
+  document.getElementById('r-other-row').style.display = other > 0 ? '' : 'none';
+  UI.setText('r-total', fmt.currency(total));
+
+  document.getElementById('results-section').classList.remove('hidden');
+}
+
+calculate();
+</script>
+</body>
+</html>
