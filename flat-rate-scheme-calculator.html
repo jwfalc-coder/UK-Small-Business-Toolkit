@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flat Rate Scheme Calculator UK | UK Small Business Toolkit</title>
+  <meta name="description" content="Is the VAT Flat Rate Scheme worth it? Compare FRS versus standard VAT for every HMRC sector. Includes limited cost trader check and first-year discount.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/flat-rate-scheme-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Flat Rate Scheme Calculator UK | UK Small Business Toolkit">
+  <meta property="og:description" content="Compare VAT Flat Rate Scheme versus standard VAT for your business.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"VAT & Invoicing","item":"https://YOURDOMAIN/#vat-invoicing"},{"@type":"ListItem","position":3,"name":"Flat Rate Scheme Calculator"}]}</script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="header-inner">
+  <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+  <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg></button>
+</div></div></header>
+
+<div class="page-hero"><div class="container">
+  <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+  <div class="hero-text">
+    <nav class="breadcrumb" style="margin-bottom:8px;"><a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><a href="index.html#vat-invoicing">VAT &amp; Invoicing</a><span class="breadcrumb-sep">&#8250;</span><span class="breadcrumb-current">Flat Rate Scheme Calculator</span></nav>
+    <h1>Flat Rate Scheme Calculator UK</h1>
+    <p>Is the VAT Flat Rate Scheme worth it for your business? Compare FRS versus standard VAT, check your sector percentage, and see whether the limited cost trader rate applies to you.</p>
+    <div class="hero-meta"><span class="hero-badge">VAT &amp; Invoicing</span><span class="hero-badge slate">All HMRC sectors included</span></div>
+  </div>
+</div></div>
+
+<main><div class="container"><div class="tool-layout"><div class="tool-main">
+  <div class="card" id="inputs-card">
+    <div class="card-title">Your business details</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="vat-turnover">Annual VAT-inclusive turnover</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="vat-turnover" class="form-input input-with-prefix" placeholder="120000" min="0"></div>
+        <div class="form-hint">Your total annual sales including 20% VAT. For standard-rated sales: multiply net turnover by 1.2.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-vat-frs">Annual input VAT on purchases</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="input-vat-frs" class="form-input input-with-prefix" placeholder="3000" min="0"></div>
+        <div class="form-hint">Total VAT you pay on business purchases and expenses each year.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="frs-sector-calc">Your trade sector</label>
+        <select id="frs-sector-calc" class="form-select"><option value="">-- Select sector --</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="first-year">First year of VAT registration?</label>
+        <select id="first-year" class="form-select">
+          <option value="no">No</option>
+          <option value="yes">Yes (1% discount applies)</option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn--primary" onclick="calculate()">Compare schemes</button>
+      <button class="btn btn--secondary" onclick="resetForm()">Reset</button>
+    </div>
+  </div>
+
+  <div id="results-section" class="hidden mt-24">
+    <div id="lct-warning" class="hidden mb-24"></div>
+    <div class="results-grid results-grid--3 mb-24">
+      <div class="result-card"><div class="result-label">Standard scheme: VAT to HMRC</div><div class="result-value" id="res-standard">--</div></div>
+      <div class="result-card"><div class="result-label">FRS: VAT to HMRC</div><div class="result-value" id="res-frs">--</div></div>
+      <div class="result-card result-card--highlight"><div class="result-label">Annual saving / cost</div><div class="result-value" id="res-saving">--</div></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">Comparison breakdown</div>
+      <div id="comparison-detail"></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">How the Flat Rate Scheme works</div>
+      <p class="text-sm text-muted">Under the FRS, you charge your customers the normal 20% VAT rate. Instead of calculating the exact difference between output and input VAT, you pay HMRC a fixed percentage of your VAT-inclusive (gross) turnover. The percentage depends on your trade sector. The difference between the VAT you collect and the amount you pay HMRC is yours to keep.</p>
+      <p class="text-sm text-muted mt-8">The FRS is generally most beneficial for businesses with low input VAT (service businesses with few purchases). Businesses that buy lots of goods or materials often do better under the standard scheme.</p>
+    </div>
+    <div class="disclaimer">Results are estimates for guidance only. Not financial or legal advice. Consult a qualified accountant or HMRC before switching VAT schemes.</div>
+  </div>
+</div>
+
+<aside class="tool-sidebar">
+  <div class="card card--compact">
+    <div class="card-title">Limited cost trader</div>
+    <p class="text-sm text-muted">If your business spends less than 2% of its VAT-inclusive turnover (or less than &#163;1,000 per year) on goods, HMRC classifies you as a limited cost trader. You must use the 16.5% flat rate regardless of your sector. Many IT consultants and contractors are caught by this rule.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">First-year discount</div>
+    <p class="text-sm text-muted">If you are in the first year of VAT registration, you get a 1% reduction on your FRS rate. This applies for the first 12 months of VAT registration only.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Related tools</div>
+    <a href="vat-calculator.html" class="sidebar-link">VAT Calculator</a>
+    <a href="vat-return-calculator.html" class="sidebar-link">VAT Return Calculator</a>
+    <a href="mtd-checker.html" class="sidebar-link">MTD Checker</a>
+  </div>
+</aside></div>
+
+<section class="related-tools"><h2>Related tools</h2><div class="related-grid">
+  <a href="vat-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="related-title">VAT Calculator</div><div class="related-desc">Add or remove VAT at 20%, 5%, or 0%</div></a>
+  <a href="vat-return-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8"/></svg></div><div class="related-title">VAT Return Calculator</div><div class="related-desc">Box-by-box VAT100 guide and deadline calculator</div></a>
+  <a href="invoice-generator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg></div><div class="related-title">Invoice Generator</div><div class="related-desc">Create professional UK invoices with VAT</div></a>
+</div></section>
+</div></main>
+
+<footer class="site-footer"><div class="container"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a><p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p></div>
+  <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a><a href="capital-allowances-calculator.html">Capital Allowances</a></div>
+  <div class="footer-col"><h4>VAT &amp; Invoicing</h4><a href="vat-calculator.html">VAT Calculator</a><a href="vat-return-calculator.html">VAT Return</a><a href="invoice-generator.html">Invoice Generator</a><a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a></div>
+  <div class="footer-col"><h4>Compliance</h4><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a><a href="break-even-calculator.html">Break-Even</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></div>
+</div><div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div></div></footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link active"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+const frsSelect = document.getElementById('frs-sector-calc');
+Object.keys(VAT.FRS_RATES).sort().forEach(s => {
+  const o = document.createElement('option');
+  o.value = VAT.FRS_RATES[s]; o.textContent = s + ' (' + VAT.FRS_RATES[s] + '%)';
+  frsSelect.appendChild(o);
+});
+
+function calculate() {
+  const turnover  = UI.numVal('vat-turnover', 0);
+  const inputVAT  = UI.numVal('input-vat-frs', 0);
+  const sectorRate= parseFloat(frsSelect.value) || 0;
+  const firstYear = document.getElementById('first-year').value === 'yes';
+
+  if (turnover <= 0) { alert('Please enter your annual turnover.'); return; }
+  if (!frsSelect.value) { alert('Please select your trade sector.'); return; }
+
+  const result = VAT.compareFRS(turnover, sectorRate, inputVAT);
+  const effectiveRate = firstYear ? sectorRate - 1 : sectorRate;
+  const frsPaid = fmt.round2(turnover * (effectiveRate / 100));
+  const saving = fmt.round2(result.standard - frsPaid);
+  const useFRS = frsPaid < result.standard;
+
+  const lctWarning = document.getElementById('lct-warning');
+  if (result.isLimitedCostTrader) {
+    lctWarning.innerHTML = '<div class="info-box info-box--red"><strong>Limited cost trader warning:</strong> Your input VAT appears to be less than 2% of your VAT-inclusive turnover or under &#163;1,000. HMRC classifies you as a limited cost trader and you must use the 16.5% flat rate, regardless of your sector. This makes the FRS unattractive for most limited cost traders.</div>';
+    UI.show('lct-warning');
+  } else {
+    UI.hide('lct-warning');
+  }
+
+  UI.setText('res-standard', fmt.currency(result.standard));
+  UI.setText('res-frs', fmt.currency(frsPaid));
+  const savingEl = document.getElementById('res-saving');
+  savingEl.textContent = (saving >= 0 ? 'Save ' : 'Cost ') + fmt.currency(Math.abs(saving));
+  savingEl.style.color = saving >= 0 ? 'var(--success)' : 'var(--error)';
+
+  const outputVAT = fmt.round2(turnover * (20 / 120));
+  document.getElementById('comparison-detail').innerHTML =
+    '<div class="calc-breakdown">' +
+    '<div class="calc-row"><span>VAT-inclusive turnover</span><span>' + fmt.currency(turnover) + '</span></div>' +
+    '<div class="calc-row"><span>Output VAT collected (20/120 of turnover)</span><span>' + fmt.currency(outputVAT) + '</span></div>' +
+    '</div>' +
+    '<div class="results-grid results-grid--2 mt-16">' +
+    '<div class="result-card' + (!useFRS ? ' result-card--highlight' : '') + '"><div class="result-label">Standard scheme</div><div class="calc-breakdown mt-8"><div class="calc-row text-sm"><span>Output VAT</span><span>' + fmt.currency(outputVAT) + '</span></div><div class="calc-row text-sm text-success"><span>Less input VAT</span><span>minus ' + fmt.currency(inputVAT) + '</span></div><div class="calc-row text-sm" style="font-weight:600;"><span>To HMRC</span><span>' + fmt.currency(result.standard) + '</span></div></div></div>' +
+    '<div class="result-card' + (useFRS ? ' result-card--highlight' : '') + '"><div class="result-label">Flat Rate Scheme' + (firstYear ? ' (with 1% discount)' : '') + '</div><div class="calc-breakdown mt-8"><div class="calc-row text-sm"><span>Sector rate</span><span>' + effectiveRate + '%</span></div><div class="calc-row text-sm"><span>' + effectiveRate + '% of ' + fmt.currency(turnover) + '</span><span>' + fmt.currency(frsPaid) + '</span></div><div class="calc-row text-sm"><span>Input VAT: not reclaimable</span><span class="text-warning">n/a</span></div><div class="calc-row text-sm" style="font-weight:600;"><span>To HMRC</span><span>' + fmt.currency(frsPaid) + '</span></div></div></div>' +
+    '</div>' +
+    '<div class="info-box info-box--' + (useFRS ? 'success' : 'warning') + ' mt-16"><strong>' + (useFRS ? 'The Flat Rate Scheme saves you ' + fmt.currency(saving) + ' per year' : 'The standard scheme saves you ' + fmt.currency(Math.abs(saving)) + ' per year') + '</strong> based on these figures. ' + (useFRS ? 'The FRS appears beneficial for your business.' : 'The standard scheme appears more beneficial given your level of input VAT.') + '</div>';
+
+  UI.show('results-section');
+}
+function resetForm() {
+  ['vat-turnover','input-vat-frs'].forEach(id => document.getElementById(id).value = '');
+  frsSelect.value = ''; document.getElementById('first-year').value = 'no';
+  UI.hide('results-section'); UI.hide('lct-warning');
+}
+</script>
+</body>
+</html>

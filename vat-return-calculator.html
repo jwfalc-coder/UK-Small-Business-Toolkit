@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAT Return Calculator UK | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate your UK VAT return. Enter output and input VAT to find net payable or reclaimable. Box-by-box VAT100 guide and MTD quarterly deadline calculator included.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/vat-return-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="VAT Return Calculator UK | UK Small Business Toolkit">
+  <meta property="og:description" content="Calculate output vs input VAT, net payable, and quarterly MTD deadlines.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"VAT & Invoicing","item":"https://YOURDOMAIN/#vat-invoicing"},{"@type":"ListItem","position":3,"name":"VAT Return Calculator"}]}</script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="header-inner">
+  <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+  <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg></button>
+</div></div></header>
+
+<div class="page-hero"><div class="container">
+  <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+  <div class="hero-text">
+    <nav class="breadcrumb" style="margin-bottom:8px;"><a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><a href="index.html#vat-invoicing">VAT &amp; Invoicing</a><span class="breadcrumb-sep">&#8250;</span><span class="breadcrumb-current">VAT Return Calculator</span></nav>
+    <h1>VAT Return Calculator UK</h1>
+    <p>Enter your output VAT and input VAT to calculate your net VAT payable or reclaimable. Includes a box-by-box guide to completing your VAT100 return and an MTD quarterly deadline calculator.</p>
+    <div class="hero-meta"><span class="hero-badge">VAT &amp; Invoicing</span><span class="hero-badge slate">Updated for 2025/26</span></div>
+  </div>
+</div></div>
+
+<main><div class="container"><div class="tool-layout"><div class="tool-main">
+  <div class="card" id="inputs-card">
+    <div class="card-title">VAT return figures</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="output-vat">Output VAT (Box 1: VAT charged on sales)</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="output-vat" class="form-input input-with-prefix" placeholder="4800.00" min="0" step="0.01"></div>
+        <div class="form-hint">The total VAT you have charged to your customers during the period.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-vat">Input VAT (Box 4: VAT reclaimed on purchases)</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="input-vat" class="form-input input-with-prefix" placeholder="1200.00" min="0" step="0.01"></div>
+        <div class="form-hint">The total VAT you have paid on business purchases and expenses during the period.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="net-sales">Net sales (Box 6: total value of sales exc. VAT)</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="net-sales" class="form-input input-with-prefix" placeholder="24000.00" min="0" step="0.01"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="net-purchases">Net purchases (Box 7: total value of purchases exc. VAT)</label>
+        <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="net-purchases" class="form-input input-with-prefix" placeholder="6000.00" min="0" step="0.01"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="vat-period-end">VAT period end date</label>
+      <input type="date" id="vat-period-end" class="form-input">
+      <div class="form-hint">Enter your quarter end date to calculate the filing and payment deadline.</div>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn--primary" onclick="calculate()">Calculate VAT return</button>
+      <button class="btn btn--secondary" onclick="resetForm()">Reset</button>
+    </div>
+  </div>
+
+  <div id="results-section" class="hidden mt-24">
+    <div class="results-grid results-grid--3 mb-24">
+      <div class="result-card"><div class="result-label">Output VAT (Box 1)</div><div class="result-value" id="res-output">--</div></div>
+      <div class="result-card"><div class="result-label">Input VAT (Box 4)</div><div class="result-value" id="res-input">--</div></div>
+      <div class="result-card result-card--highlight"><div class="result-label" id="res-label">Net VAT payable</div><div class="result-value" id="res-net">--</div></div>
+    </div>
+    <div id="deadline-card" class="card mb-24 hidden">
+      <div class="card-title">Filing and payment deadline</div>
+      <div id="deadline-detail"></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">Box-by-box guide to the VAT100 return</div>
+      <div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Box</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Box 1</strong></td><td>VAT due on sales and outputs (output tax). Includes VAT charged on UK sales and any reverse charge VAT.</td></tr>
+          <tr><td><strong>Box 2</strong></td><td>VAT due on acquisitions from EC member states (usually 0 for most small businesses post-Brexit).</td></tr>
+          <tr><td><strong>Box 3</strong></td><td>Total VAT due (Box 1 + Box 2). Calculated automatically.</td></tr>
+          <tr><td><strong>Box 4</strong></td><td>VAT reclaimed on purchases and inputs (input tax). Includes VAT on business expenses, purchases, and imports.</td></tr>
+          <tr><td><strong>Box 5</strong></td><td>Net VAT payable to HMRC (Box 3 minus Box 4). If negative, HMRC owes you a refund.</td></tr>
+          <tr><td><strong>Box 6</strong></td><td>Total value of sales and all other outputs, excluding VAT. Whole pounds only.</td></tr>
+          <tr><td><strong>Box 7</strong></td><td>Total value of purchases and all other inputs, excluding VAT. Whole pounds only.</td></tr>
+          <tr><td><strong>Box 8</strong></td><td>Total value of goods supplied to EC member states (usually 0 for most small businesses post-Brexit).</td></tr>
+          <tr><td><strong>Box 9</strong></td><td>Total value of goods acquired from EC member states (usually 0 for most small businesses post-Brexit).</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">Your return summary</div>
+      <div id="return-summary"></div>
+    </div>
+    <div class="disclaimer">Results are estimates for guidance only. Not financial or legal advice. Always verify your return figures before submission. Consult a qualified accountant for advice tailored to your business.</div>
+  </div>
+</div>
+
+<aside class="tool-sidebar">
+  <div class="card card--compact">
+    <div class="card-title">When to file and pay</div>
+    <p class="text-sm text-muted">Under MTD for VAT, your return and payment are due 1 calendar month and 7 days after the VAT period ends. For a quarter ending 31 March, the deadline is 7 May.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Cash accounting</div>
+    <p class="text-sm text-muted">Under cash accounting, you account for VAT when you receive or make payment, not when you invoice. This can help businesses with slow-paying customers. Only available if turnover is below &#163;1.35m.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Related tools</div>
+    <a href="vat-calculator.html" class="sidebar-link">VAT Calculator</a>
+    <a href="flat-rate-scheme-calculator.html" class="sidebar-link">Flat Rate Scheme Calculator</a>
+    <a href="mtd-checker.html" class="sidebar-link">MTD Checker</a>
+  </div>
+</aside></div>
+
+<section class="related-tools"><h2>Related tools</h2><div class="related-grid">
+  <a href="vat-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="related-title">VAT Calculator</div><div class="related-desc">Add or remove VAT at 20%, 5%, or 0%</div></a>
+  <a href="flat-rate-scheme-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="related-title">Flat Rate Scheme Calculator</div><div class="related-desc">Is the FRS worth it for your business?</div></a>
+  <a href="mtd-checker.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><div class="related-title">MTD Checker</div><div class="related-desc">Find out when MTD applies to your business</div></a>
+</div></section>
+</div></main>
+
+<footer class="site-footer"><div class="container"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a><p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p></div>
+  <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a><a href="capital-allowances-calculator.html">Capital Allowances</a></div>
+  <div class="footer-col"><h4>VAT &amp; Invoicing</h4><a href="vat-calculator.html">VAT Calculator</a><a href="vat-return-calculator.html">VAT Return</a><a href="invoice-generator.html">Invoice Generator</a><a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a></div>
+  <div class="footer-col"><h4>Compliance</h4><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a><a href="break-even-calculator.html">Break-Even</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></div>
+</div><div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div></div></footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link active"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+function calculate() {
+  const outputVAT   = UI.numVal('output-vat', 0);
+  const inputVAT    = UI.numVal('input-vat', 0);
+  const netSales    = UI.numVal('net-sales', 0);
+  const netPurch    = UI.numVal('net-purchases', 0);
+  const periodEnd   = document.getElementById('vat-period-end').value;
+
+  const netVAT = fmt.round2(outputVAT - inputVAT);
+  const payable = netVAT >= 0;
+
+  UI.setText('res-output', fmt.currency(outputVAT));
+  UI.setText('res-input', fmt.currency(inputVAT));
+  UI.setText('res-net', fmt.currency(Math.abs(netVAT)));
+  document.getElementById('res-label').textContent = payable ? 'Net VAT payable (Box 5)' : 'VAT refund due (Box 5)';
+  document.getElementById('res-net').style.color = payable ? 'var(--error)' : 'var(--success)';
+
+  if (periodEnd) {
+    const d = new Date(periodEnd);
+    const deadline = new Date(d);
+    deadline.setMonth(deadline.getMonth() + 1);
+    deadline.setDate(deadline.getDate() + 7);
+    const daysUntil = Math.round((deadline - new Date()) / 86400000);
+    document.getElementById('deadline-detail').innerHTML =
+      '<div class="calc-breakdown">' +
+      '<div class="calc-row"><span>VAT period end</span><span>' + d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) + '</span></div>' +
+      '<div class="calc-row calc-row--total"><span>Filing and payment deadline</span><span>' + deadline.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) + '</span></div>' +
+      '</div>' +
+      UI.deadlineBadge(daysUntil);
+    UI.show('deadline-card');
+  } else {
+    UI.hide('deadline-card');
+  }
+
+  document.getElementById('return-summary').innerHTML =
+    '<div class="table-wrap"><table class="data-table"><tbody>' +
+    '<tr><td><strong>Box 1</strong> Output VAT (VAT on sales)</td><td>' + fmt.currency(outputVAT) + '</td></tr>' +
+    '<tr><td><strong>Box 2</strong> VAT on EC acquisitions</td><td>&#163;0.00</td></tr>' +
+    '<tr><td><strong>Box 3</strong> Total VAT due (Box 1 + Box 2)</td><td>' + fmt.currency(outputVAT) + '</td></tr>' +
+    '<tr><td><strong>Box 4</strong> Input VAT reclaimed</td><td>' + fmt.currency(inputVAT) + '</td></tr>' +
+    '<tr style="font-weight:600;"><td><strong>Box 5</strong> Net VAT ' + (payable ? 'payable to HMRC' : 'refund from HMRC') + '</td><td style="color:' + (payable ? 'var(--error)' : 'var(--success)') + ';">' + fmt.currency(Math.abs(netVAT)) + '</td></tr>' +
+    (netSales > 0 ? '<tr><td><strong>Box 6</strong> Net value of sales</td><td>' + fmt.currency(netSales) + '</td></tr>' : '') +
+    (netPurch > 0 ? '<tr><td><strong>Box 7</strong> Net value of purchases</td><td>' + fmt.currency(netPurch) + '</td></tr>' : '') +
+    '</tbody></table></div>';
+
+  UI.show('results-section');
+}
+function resetForm() {
+  ['output-vat','input-vat','net-sales','net-purchases'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('vat-period-end').value = '';
+  UI.hide('results-section'); UI.hide('deadline-card');
+}
+</script>
+</body>
+</html>
