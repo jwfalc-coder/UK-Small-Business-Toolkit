@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Mileage Calculator UK 2025/26 | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate your HMRC approved mileage allowance for 2025/26. Cars, vans, motorcycles, and bicycles. Shows total claimable amount, tax relief at your marginal rate, and VAT reclaim option.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/business-mileage-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Business Mileage Calculator UK 2025/26 | UK Small Business Toolkit">
+  <meta property="og:description" content="Calculate HMRC approved mileage allowance for cars, vans, motorcycles, and bicycles.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"Company Tax & Finance","item":"https://YOURDOMAIN/#tax-finance"},{"@type":"ListItem","position":3,"name":"Business Mileage Calculator"}]}</script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="header-inner">
+  <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+  <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg></button>
+</div></div></header>
+
+<div class="page-hero"><div class="container">
+  <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v5"/><circle cx="16" cy="17" r="2"/><circle cx="9" cy="17" r="2"/><path d="M15 17H11v-5"/><path d="M7 17v-2"/></svg></div>
+  <div class="hero-text">
+    <nav class="breadcrumb" style="margin-bottom:8px;"><a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><a href="index.html#tax-finance">Company Tax &amp; Finance</a><span class="breadcrumb-sep">&#8250;</span><span class="breadcrumb-current">Business Mileage Calculator</span></nav>
+    <h1>Business Mileage Calculator 2025/26</h1>
+    <p>Calculate your HMRC approved mileage allowance for cars, vans, motorcycles, and bicycles. See your total claimable amount and the tax relief at your marginal rate.</p>
+    <div class="hero-meta"><span class="hero-badge">Company Tax &amp; Finance</span><span class="hero-badge slate">Updated for 2025/26</span></div>
+  </div>
+</div></div>
+
+<main><div class="container"><div class="tool-layout"><div class="tool-main">
+  <div class="card" id="inputs-card">
+    <div class="card-title">Enter your mileage</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="vehicle">Vehicle type</label>
+        <select id="vehicle" class="form-select" onchange="updateRateNote()">
+          <option value="car">Car or van</option>
+          <option value="motorcycle">Motorcycle</option>
+          <option value="bicycle">Bicycle</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="miles">Business miles this year</label>
+        <input type="number" id="miles" class="form-input" placeholder="8000" min="0">
+      </div>
+    </div>
+    <div id="rate-note" class="info-box info-box--info mb-16">Car/van: 45p per mile for the first 10,000 miles, then 25p per mile.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="marginal-rate">Your marginal income tax rate</label>
+        <select id="marginal-rate" class="form-select">
+          <option value="0.20">20% (Basic rate)</option>
+          <option value="0.40">40% (Higher rate)</option>
+          <option value="0.45">45% (Additional rate)</option>
+          <option value="0.19">19% (Corporation tax, small profits)</option>
+          <option value="0.25">25% (Corporation tax, main rate)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="vat-registered">VAT registered?</label>
+        <select id="vat-registered" class="form-select">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn--primary" onclick="calculate()">Calculate mileage allowance</button>
+      <button class="btn btn--secondary" onclick="resetForm()">Reset</button>
+    </div>
+  </div>
+
+  <div id="results-section" class="hidden mt-24">
+    <div class="results-grid results-grid--3 mb-24">
+      <div class="result-card result-card--highlight"><div class="result-label">Total mileage allowance</div><div class="result-value" id="res-total">--</div></div>
+      <div class="result-card"><div class="result-label">Tax relief</div><div class="result-value" id="res-relief">--</div></div>
+      <div class="result-card"><div class="result-label">Net cost after relief</div><div class="result-value" id="res-net">--</div></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">Mileage breakdown</div>
+      <div id="breakdown-detail"></div>
+    </div>
+    <div class="card mb-24">
+      <div class="card-title">HMRC approved mileage rates 2025/26</div>
+      <div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Vehicle</th><th>First 10,000 miles</th><th>Over 10,000 miles</th></tr></thead>
+        <tbody>
+          <tr><td>Car or van</td><td><strong>45p</strong></td><td><strong>25p</strong></td></tr>
+          <tr><td>Motorcycle</td><td><strong>24p</strong></td><td><strong>24p</strong></td></tr>
+          <tr><td>Bicycle</td><td><strong>20p</strong></td><td><strong>20p</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-sm text-muted mt-8">These are the approved mileage rates for 2025/26. The car/van rate has not changed since 2011. HMRC reviews rates annually; check HMRC EIM31205 for any updates.</p>
+    </div>
+    <div id="vat-section" class="card mb-24 hidden">
+      <div class="card-title">VAT reclaim on fuel</div>
+      <div id="vat-detail"></div>
+    </div>
+    <div class="disclaimer">Results are estimates for guidance only. Not financial or legal advice. Consult a qualified accountant for advice tailored to your business.</div>
+  </div>
+</div>
+
+<aside class="tool-sidebar">
+  <div class="card card--compact">
+    <div class="card-title">Using your own vehicle</div>
+    <p class="text-sm text-muted">If you use your own vehicle for business, you can claim HMRC approved mileage allowance. For sole traders, this reduces your taxable profit. For limited company directors, the company reimburses you at the HMRC rate and deducts it as a business expense.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Passenger payments</div>
+    <p class="text-sm text-muted">If you carry employees as passengers on business journeys, you can also claim 5p per mile per passenger. This is separate from the main mileage allowance.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Related tools</div>
+    <a href="corporation-tax-calculator.html" class="sidebar-link">Corporation Tax Calculator</a>
+    <a href="capital-allowances-calculator.html" class="sidebar-link">Capital Allowances Calculator</a>
+    <a href="sole-trader-vs-ltd.html" class="sidebar-link">Sole Trader vs Ltd</a>
+  </div>
+</aside></div>
+
+<section class="related-tools"><h2>Related tools</h2><div class="related-grid">
+  <a href="corporation-tax-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg></div><div class="related-title">Corporation Tax Calculator</div><div class="related-desc">Calculate your CT bill with full marginal relief workings</div></a>
+  <a href="capital-allowances-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M12 12v4M10 14h4"/></svg></div><div class="related-title">Capital Allowances Calculator</div><div class="related-desc">AIA, full expensing, and WDA</div></a>
+  <a href="sole-trader-vs-ltd.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="related-title">Sole Trader vs Ltd</div><div class="related-desc">Side-by-side net take-home comparison</div></a>
+</div></section>
+</div></main>
+
+<footer class="site-footer"><div class="container"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a><p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p></div>
+  <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a><a href="capital-allowances-calculator.html">Capital Allowances</a></div>
+  <div class="footer-col"><h4>VAT &amp; Invoicing</h4><a href="vat-calculator.html">VAT Calculator</a><a href="vat-return-calculator.html">VAT Return</a><a href="invoice-generator.html">Invoice Generator</a><a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a></div>
+  <div class="footer-col"><h4>Compliance</h4><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a><a href="break-even-calculator.html">Break-Even</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></div>
+</div><div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div></div></footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link active"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+function updateRateNote() {
+  const v = document.getElementById('vehicle').value;
+  const notes = {
+    car: 'Car or van: 45p per mile for the first 10,000 miles, then 25p per mile.',
+    motorcycle: 'Motorcycle: 24p per mile (flat rate, no threshold).',
+    bicycle: 'Bicycle: 20p per mile (flat rate, no threshold).'
+  };
+  document.getElementById('rate-note').textContent = notes[v];
+}
+
+function calculate() {
+  const miles   = UI.numVal('miles', 0);
+  const vehicle = document.getElementById('vehicle').value;
+  const rate    = parseFloat(document.getElementById('marginal-rate').value);
+  const vatReg  = document.getElementById('vat-registered').value === 'yes';
+
+  if (miles <= 0) { alert('Please enter your business mileage.'); return; }
+
+  const result  = Mileage.calculate(miles, vehicle);
+  const relief  = Mileage.taxRelief(result.total, rate);
+  const net     = fmt.round2(result.total - relief);
+
+  UI.setText('res-total', fmt.currency(result.total));
+  UI.setText('res-relief', fmt.currency(relief));
+  UI.setText('res-net', fmt.currency(net));
+
+  const rates = Mileage.RATES[vehicle];
+  let html = '<div class="calc-breakdown">';
+  if (result.firstMiles > 0) {
+    html += '<div class="calc-row"><span>' + fmt.number(result.firstMiles) + ' miles at ' + (rates.first * 100).toFixed(0) + 'p</span><span>' + fmt.currency(result.firstBand) + '</span></div>';
+  }
+  if (result.additionalMiles > 0) {
+    html += '<div class="calc-row"><span>' + fmt.number(result.additionalMiles) + ' miles at ' + (rates.additional * 100).toFixed(0) + 'p (over 10,000)</span><span>' + fmt.currency(result.secondBand) + '</span></div>';
+  }
+  html += '<div class="calc-row calc-row--total"><span>Total mileage allowance</span><span>' + fmt.currency(result.total) + '</span></div>';
+  html += '<div class="calc-row text-success"><span>Tax relief at ' + (rate * 100).toFixed(0) + '%</span><span>' + fmt.currency(relief) + '</span></div>';
+  html += '<div class="calc-row calc-row--total"><span>Net cost after tax relief</span><span>' + fmt.currency(net) + '</span></div>';
+  html += '</div>';
+  document.getElementById('breakdown-detail').innerHTML = html;
+
+  if (vatReg && vehicle === 'car') {
+    const vatEl = document.getElementById('vat-section');
+    document.getElementById('vat-detail').innerHTML =
+      '<p class="text-sm text-muted">If you are VAT-registered and use your own car for business, you can reclaim VAT on the fuel portion of the mileage allowance using HMRC advisory fuel rates (not the full 45p/25p rate). The amount depends on your car engine size and the current advisory fuel rate. Check the latest advisory fuel rates on the HMRC website before claiming.</p>' +
+      '<p class="text-sm text-muted mt-8">You cannot reclaim VAT on the full mileage allowance, only on the fuel element. Keep a detailed mileage log as evidence for any VAT reclaim.</p>';
+    UI.show('vat-section');
+  } else {
+    UI.hide('vat-section');
+  }
+
+  UI.show('results-section');
+}
+
+function resetForm() {
+  document.getElementById('miles').value = '';
+  UI.hide('results-section');
+}
+</script>
+</body>
+</html>
