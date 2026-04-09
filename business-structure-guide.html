@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Structure Guide UK: Sole Trader vs Ltd vs LLP | UK Small Business Toolkit</title>
+  <meta name="description" content="Compare UK business structures: sole trader, partnership, LLP, and limited company. Interactive questionnaire gives a personalised recommendation based on your profit, risk appetite, and plans.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/business-structure-guide.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Business Structure Guide UK | UK Small Business Toolkit">
+  <meta property="og:description" content="Compare sole trader, partnership, LLP, and limited company structures with an interactive recommendation.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"Companies House & Compliance","item":"https://YOURDOMAIN/#compliance"},{"@type":"ListItem","position":3,"name":"Business Structure Guide"}]}</script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="header-inner">
+  <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+  <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg></button>
+</div></div></header>
+
+<div class="page-hero"><div class="container">
+  <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+  <div class="hero-text">
+    <nav class="breadcrumb" style="margin-bottom:8px;"><a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><a href="index.html#compliance">Companies House &amp; Compliance</a><span class="breadcrumb-sep">&#8250;</span><span class="breadcrumb-current">Business Structure Guide</span></nav>
+    <h1>Business Structure Guide UK</h1>
+    <p>Compare sole trader, partnership, LLP, and limited company structures side by side. Answer a few questions to get a personalised recommendation based on your profit level, risk appetite, and plans.</p>
+    <div class="hero-meta"><span class="hero-badge">Companies House &amp; Compliance</span><span class="hero-badge slate">Decision support tool</span></div>
+  </div>
+</div></div>
+
+<main><div class="container"><div class="tool-layout"><div class="tool-main">
+
+  <div class="card mb-24">
+    <div class="card-title">Side-by-side comparison</div>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Factor</th><th>Sole trader</th><th>Partnership</th><th>LLP</th><th>Limited company</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Liability</strong></td><td class="text-warning">Unlimited personal liability</td><td class="text-warning">Unlimited joint liability</td><td class="text-success">Limited liability</td><td class="text-success">Limited liability</td></tr>
+        <tr><td><strong>Tax on profits</strong></td><td>Income tax + Class 4 NI (up to 45%)</td><td>Income tax + Class 4 NI per partner</td><td>Income tax + NI per member</td><td>Corporation tax (19% or 25%), then dividend tax</td></tr>
+        <tr><td><strong>Setup cost</strong></td><td class="text-success">Free (register with HMRC only)</td><td class="text-success">Free to low</td><td>&#163;40 online (Companies House)</td><td>&#163;50 online (Companies House)</td></tr>
+        <tr><td><strong>Annual compliance</strong></td><td class="text-success">Self Assessment only</td><td class="text-success">Self Assessment per partner</td><td>Accounts + confirmation statement</td><td>Accounts + CT600 + confirmation statement</td></tr>
+        <tr><td><strong>Privacy</strong></td><td class="text-success">High (nothing public)</td><td class="text-success">High</td><td class="text-warning">Accounts publicly filed</td><td class="text-warning">Accounts publicly filed</td></tr>
+        <tr><td><strong>Can take investment?</strong></td><td class="text-warning">Difficult</td><td class="text-warning">Difficult</td><td>Possible</td><td class="text-success">Yes, via shares</td></tr>
+        <tr><td><strong>NI treatment</strong></td><td>Class 4 on profits above &#163;12,570</td><td>Class 4 per partner</td><td>Class 4 per member</td><td>Employer + employee NI on salary only</td></tr>
+        <tr><td><strong>Pension access</strong></td><td>Personal pension contributions</td><td>Personal pension contributions</td><td>Personal pension contributions</td><td>Company pension contributions (more tax-efficient)</td></tr>
+        <tr><td><strong>Making Tax Digital</strong></td><td>MTD ITSA from April 2026 (if income over &#163;50k)</td><td>MTD ITSA from April 2026 per partner</td><td>MTD ITSA per member</td><td>MTD for VAT; CT not yet MTD</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card mb-24" id="questionnaire-card">
+    <div class="card-title">Get a personalised recommendation</div>
+    <p class="text-sm text-muted mb-16">Answer these questions to get a recommendation for your situation.</p>
+
+    <div class="form-group">
+      <label class="form-label" for="q-profit">What is your expected annual profit?</label>
+      <select id="q-profit" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="low">Under &#163;30,000</option>
+        <option value="mid">&#163;30,000 to &#163;80,000</option>
+        <option value="high">Over &#163;80,000</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-partners">Are you working alone or with others?</label>
+      <select id="q-partners" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="solo">Working alone</option>
+        <option value="partner">With one or more partners</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-liability">How important is personal liability protection?</label>
+      <select id="q-liability" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="low">Not very (low-risk work, no employees)</option>
+        <option value="high">Very important (contracts, employees, or significant assets)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-investment">Do you plan to take on investors or sell the business?</label>
+      <select id="q-investment" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="no">No</option>
+        <option value="yes">Yes, possibly</option>
+      </select>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn--primary" onclick="recommend()">Get recommendation</button>
+      <button class="btn btn--secondary" onclick="resetQuestionnaire()">Reset</button>
+    </div>
+
+    <div id="recommendation" class="hidden mt-24">
+      <div id="recommendation-detail"></div>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <div class="card-title">When does a limited company make sense?</div>
+    <p class="text-sm text-muted">The limited company structure generally becomes tax-efficient once your profit exceeds around &#163;30,000 to &#163;40,000 per year, though this varies with the April 2025 employer NI changes. Below that level, the tax saving is often smaller than the additional accountancy and admin costs. Use the <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd calculator</a> to find your exact breakeven point.</p>
+  </div>
+
+  <div class="disclaimer">This tool provides general guidance only and is not a substitute for professional legal or financial advice. Business structure decisions have significant legal, financial, and tax implications. Always consult a qualified accountant or solicitor before making this decision.</div>
+</div>
+
+<aside class="tool-sidebar">
+  <div class="card card--compact">
+    <div class="card-title">Most common choice</div>
+    <p class="text-sm text-muted">The vast majority of UK freelancers and consultants operate as either sole traders or limited companies. Sole trader is simpler and cheaper to run; limited company offers liability protection and tax efficiency above roughly &#163;30-40k profit.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">LLP vs Ltd</div>
+    <p class="text-sm text-muted">LLPs are popular with professional partnerships (solicitors, accountants, architects) because they offer limited liability with partnership tax treatment. They are less commonly used by single individuals or small businesses.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Related tools</div>
+    <a href="sole-trader-vs-ltd.html" class="sidebar-link">Sole Trader vs Ltd Calculator</a>
+    <a href="ltd-company-cost-calculator.html" class="sidebar-link">Ltd Company Cost Calculator</a>
+    <a href="corporation-tax-calculator.html" class="sidebar-link">Corporation Tax Calculator</a>
+  </div>
+</aside></div>
+
+<section class="related-tools"><h2>Related tools</h2><div class="related-grid">
+  <a href="sole-trader-vs-ltd.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="related-title">Sole Trader vs Ltd</div><div class="related-desc">Side-by-side net take-home comparison</div></a>
+  <a href="ltd-company-cost-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="related-title">Ltd Company Cost Calculator</div><div class="related-desc">The true annual overhead of running a limited company</div></a>
+  <a href="companies-house-deadlines.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="related-title">Companies House Deadlines</div><div class="related-desc">Calculate all your filing deadlines</div></a>
+</div></section>
+</div></main>
+
+<footer class="site-footer"><div class="container"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a><p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p></div>
+  <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a><a href="capital-allowances-calculator.html">Capital Allowances</a></div>
+  <div class="footer-col"><h4>VAT &amp; Invoicing</h4><a href="vat-calculator.html">VAT Calculator</a><a href="vat-return-calculator.html">VAT Return</a><a href="invoice-generator.html">Invoice Generator</a><a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a></div>
+  <div class="footer-col"><h4>Compliance</h4><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a><a href="break-even-calculator.html">Break-Even</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></div>
+</div><div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div></div></footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link active"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+function recommend() {
+  const profit     = document.getElementById('q-profit').value;
+  const partners   = document.getElementById('q-partners').value;
+  const liability  = document.getElementById('q-liability').value;
+  const investment = document.getElementById('q-investment').value;
+
+  if (!profit || !partners || !liability || !investment) { alert('Please answer all four questions.'); return; }
+
+  let rec = '', rationale = '', secondaryNote = '';
+
+  if (partners === 'partner') {
+    if (liability === 'high' || investment === 'yes') {
+      rec = 'Limited Liability Partnership (LLP) or Limited Company';
+      rationale = 'Working with partners and needing liability protection, an LLP gives you partnership tax treatment with limited liability. If you want to raise investment or bring in shareholders, a limited company is the better fit.';
+    } else {
+      rec = 'Partnership or LLP';
+      rationale = 'For a lower-risk multi-partner business, a traditional partnership is simplest. If your work carries any personal liability risk, an LLP is worth the small extra admin overhead.';
+    }
+  } else if (investment === 'yes') {
+    rec = 'Limited Company';
+    rationale = 'If you plan to take on investors or sell the business, a limited company is essential. It is the only structure that allows you to issue shares and take on external equity investment easily.';
+  } else if (profit === 'low') {
+    rec = 'Sole Trader';
+    rationale = 'At this profit level, the tax saving from a limited company is modest and often smaller than the additional accountancy and admin costs. A sole trader structure keeps things simple and cheap. Revisit this decision as your income grows.';
+    secondaryNote = 'Once your profit consistently exceeds around &#163;30,000 to &#163;40,000, incorporation starts to make financial sense.';
+  } else if (profit === 'mid') {
+    if (liability === 'high') {
+      rec = 'Limited Company';
+      rationale = 'At this profit level, a limited company offers meaningful tax savings alongside the liability protection you need. The extra admin and accountancy cost is typically offset by tax efficiency from &#163;35,000 to &#163;40,000 upwards.';
+    } else {
+      rec = 'Limited Company (consider carefully)';
+      rationale = 'At &#163;30,000 to &#163;80,000 profit, a limited company may save you tax but the saving is smaller than most people expect after accounting for employer NI changes from April 2025. Use the Sole Trader vs Ltd calculator to find your exact breakeven point before deciding.';
+    }
+  } else {
+    rec = 'Limited Company';
+    rationale = 'At this profit level, a limited company is almost certainly more tax-efficient. The combination of corporation tax (19% to 25%) and dividend tax is materially lower than income tax plus Class 4 NI for high earners. Liability protection is also increasingly important at this scale.';
+  }
+
+  document.getElementById('recommendation-detail').innerHTML =
+    '<div class="info-box info-box--success mb-16"><strong>Recommended structure: ' + rec + '</strong></div>' +
+    '<p class="text-sm mb-12">' + rationale + '</p>' +
+    (secondaryNote ? '<p class="text-sm text-muted">' + secondaryNote + '</p>' : '') +
+    '<p class="text-sm text-muted mt-12">This recommendation is based on the information you provided and general tax rules. Individual circumstances vary. Consult a qualified accountant before making this decision.</p>';
+
+  UI.show('recommendation');
+}
+function resetQuestionnaire() {
+  ['q-profit','q-partners','q-liability','q-investment'].forEach(id => document.getElementById(id).value = '');
+  UI.hide('recommendation');
+}
+</script>
+</body>
+</html>
