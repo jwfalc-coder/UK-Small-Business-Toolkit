@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Director Loan Account Calculator UK | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate s455 tax on overdrawn director loan accounts, beneficial loan benefit-in-kind, repayment deadlines, and s455 tax refund timing for UK limited companies.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/director-loan-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Director Loan Account Calculator UK | UK Small Business Toolkit">
+  <meta property="og:description" content="Calculate s455 tax, beneficial loan BIK, repayment deadlines, and s455 refund timing.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://YOURDOMAIN/"},{"@type":"ListItem","position":2,"name":"Payroll & Employment","item":"https://YOURDOMAIN/#payroll-employment"},{"@type":"ListItem","position":3,"name":"Director Loan Account Calculator"}]}</script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="header-inner">
+  <a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a>
+  <nav class="site-nav"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg></button>
+</div></div></header>
+
+<div class="page-hero"><div class="container">
+  <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+  <div class="hero-text">
+    <nav class="breadcrumb" style="margin-bottom:8px;"><a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><a href="index.html#payroll-employment">Payroll &amp; Employment</a><span class="breadcrumb-sep">&#8250;</span><span class="breadcrumb-current">Director Loan Account Calculator</span></nav>
+    <h1>Director Loan Account Calculator</h1>
+    <p>Calculate s455 tax on an overdrawn director loan account, beneficial loan benefit-in-kind, repayment deadline, and when you can reclaim the s455 tax once the loan is repaid.</p>
+    <div class="hero-meta"><span class="hero-badge">Payroll &amp; Employment</span><span class="hero-badge slate">Updated for 2025/26</span></div>
+  </div>
+</div></div>
+
+<main><div class="container"><div class="tool-layout"><div class="tool-main">
+
+  <div class="card mb-24">
+    <div class="tabs mb-16">
+      <button class="tab-btn active" data-tab="tab-s455">s455 Tax</button>
+      <button class="tab-btn" data-tab="tab-bik">Beneficial Loan BIK</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-s455">
+      <div class="card-title">s455 tax on overdrawn director loan</div>
+      <p class="text-sm text-muted mb-16">If a director loan account is overdrawn (the company has lent more to the director than they have put in) at the end of the accounting period and remains unpaid 9 months after the year-end, the company must pay s455 tax at <strong>33.75%</strong> of the outstanding balance.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="loan-balance">Overdrawn balance at year-end</label>
+          <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="loan-balance" class="form-input input-with-prefix" placeholder="15000" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="year-end-date">Accounting year-end date</label>
+          <input type="date" id="year-end-date" class="form-input">
+        </div>
+      </div>
+      <button class="btn btn--primary" onclick="calcS455()">Calculate s455 tax</button>
+      <div id="s455-result" class="hidden mt-16">
+        <div class="results-grid results-grid--3">
+          <div class="result-card result-card--highlight"><div class="result-label">s455 tax due</div><div class="result-value" id="s455-tax">--</div></div>
+          <div class="result-card"><div class="result-label">s455 payment deadline</div><div class="result-value text-sm" id="s455-deadline">--</div></div>
+          <div class="result-card"><div class="result-label">Repay loan by to avoid s455</div><div class="result-value text-sm" id="s455-repay-by">--</div></div>
+        </div>
+        <div class="card mt-16">
+          <div class="card-title">s455 refund: when do you get it back?</div>
+          <div id="s455-refund-detail"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-bik">
+      <div class="card-title">Beneficial loan benefit-in-kind (BIK)</div>
+      <p class="text-sm text-muted mb-16">If the total outstanding director loans from the company exceed &#163;10,000 at any point during the tax year, HMRC treats the interest-free (or below-market-rate) loan as a taxable benefit in kind. The official HMRC rate for 2025/26 is <strong>2.25%</strong> per annum.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="bik-loan">Average loan balance during the year</label>
+          <div class="input-prefix-wrap"><span class="input-prefix">&#163;</span><input type="number" id="bik-loan" class="form-input input-with-prefix" placeholder="20000" min="0"></div>
+          <div class="form-hint">Use the average of the opening and closing balance, or a more precise average if the balance changed significantly during the year.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bik-rate">Director marginal tax rate</label>
+          <select id="bik-rate" class="form-select">
+            <option value="0.20">20% Basic rate</option>
+            <option value="0.40">40% Higher rate</option>
+            <option value="0.45">45% Additional rate</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn--primary" onclick="calcBIK()">Calculate BIK</button>
+      <div id="bik-result" class="hidden mt-16">
+        <div class="results-grid results-grid--3">
+          <div class="result-card"><div class="result-label">Notional interest</div><div class="result-value" id="bik-notional">--</div></div>
+          <div class="result-card result-card--highlight"><div class="result-label">Personal tax on BIK</div><div class="result-value" id="bik-tax">--</div></div>
+          <div class="result-card"><div class="result-label">Employer Class 1A NI (15%)</div><div class="result-value" id="bik-ni">--</div></div>
+        </div>
+        <p class="text-sm text-muted mt-12">The BIK is declared on the director's P11D (or via payrolling of benefits). The company pays Class 1A NI at 15% on the benefit value. The director pays income tax at their marginal rate. Note: the HMRC official rate can change. Check HMRC guidance each April.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <div class="card-title">Director loan account: key rules</div>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Rule</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>s455 tax rate</td><td>33.75% of the overdrawn balance outstanding 9 months after the year-end</td></tr>
+        <tr><td>s455 payment deadline</td><td>9 months and 1 day after the accounting year-end (same as CT payment)</td></tr>
+        <tr><td>Repay loan to avoid s455</td><td>Repay before 9 months after year-end to avoid s455 charge</td></tr>
+        <tr><td>s455 refund timing</td><td>HMRC refunds s455 tax 9 months after the end of the accounting period in which the loan is repaid</td></tr>
+        <tr><td>BIK threshold</td><td>Loans over &#163;10,000 are a taxable benefit if interest-free or below the official rate</td></tr>
+        <tr><td>HMRC official rate 2025/26</td><td>2.25% per annum (check HMRC each April for updates)</td></tr>
+        <tr><td>Write-off</td><td>If the loan is written off, it becomes employment income and is subject to income tax and NI as earnings</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="disclaimer">Results are estimates for guidance only. Director loan account rules are complex. Not financial or legal advice. Consult a qualified accountant before borrowing from your company.</div>
+</div>
+
+<aside class="tool-sidebar">
+  <div class="card card--compact">
+    <div class="card-title">Avoid s455 entirely</div>
+    <p class="text-sm text-muted">The simplest way to avoid s455 is to repay the loan before 9 months after the accounting year-end. Alternatively, vote a dividend or bonus to clear the balance before the year-end, but ensure the company has sufficient distributable reserves or profits.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">s455 refund can take time</div>
+    <p class="text-sm text-muted">Even after repaying the loan, HMRC will not refund s455 until 9 months after the end of the accounting period in which the repayment was made. For a company with a 31 March year-end, a loan repaid in April 2025 (the 2025/26 year) generates a refund from January 2027.</p>
+  </div>
+  <div class="card card--compact">
+    <div class="card-title">Related tools</div>
+    <a href="statutory-pay-calculator.html" class="sidebar-link">Statutory Pay Calculator</a>
+    <a href="corporation-tax-calculator.html" class="sidebar-link">Corporation Tax Calculator</a>
+    <a href="companies-house-deadlines.html" class="sidebar-link">Companies House Deadlines</a>
+  </div>
+</aside></div>
+
+<section class="related-tools"><h2>Related tools</h2><div class="related-grid">
+  <a href="corporation-tax-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg></div><div class="related-title">Corporation Tax Calculator</div><div class="related-desc">Calculate your CT bill with full workings</div></a>
+  <a href="companies-house-deadlines.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="related-title">Companies House Deadlines</div><div class="related-desc">Calculate all your filing deadlines</div></a>
+  <a href="statutory-pay-calculator.html" class="related-card"><div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="related-title">Statutory Pay Calculator</div><div class="related-desc">SSP, SMP, and SPP for 2025/26</div></a>
+</div></section>
+</div></main>
+
+<footer class="site-footer"><div class="container"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" class="site-logo"><div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div><div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div></a><p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p></div>
+  <div class="footer-col"><h4>Tax &amp; Finance</h4><a href="corporation-tax-calculator.html">Corporation Tax</a><a href="ltd-company-cost-calculator.html">Ltd Company Costs</a><a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a><a href="business-mileage-calculator.html">Business Mileage</a><a href="capital-allowances-calculator.html">Capital Allowances</a></div>
+  <div class="footer-col"><h4>VAT &amp; Invoicing</h4><a href="vat-calculator.html">VAT Calculator</a><a href="vat-return-calculator.html">VAT Return</a><a href="invoice-generator.html">Invoice Generator</a><a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a></div>
+  <div class="footer-col"><h4>Compliance</h4><a href="companies-house-deadlines.html">CH Deadlines</a><a href="mtd-checker.html">MTD Checker</a><a href="break-even-calculator.html">Break-Even</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></div>
+</div><div class="footer-bottom"><span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span><div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div></div></footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation"><div class="mobile-nav-inner">
+  <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+  <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+  <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+  <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+</div></nav>
+
+<script src="utils.js"></script>
+<script>
+UI.initTabs();
+
+function calcS455() {
+  const balance = UI.numVal('loan-balance', 0);
+  const yearEnd = document.getElementById('year-end-date').value;
+  if (balance <= 0) { alert('Please enter the overdrawn balance.'); return; }
+
+  const s455 = fmt.round2(balance * 0.3375);
+  UI.setText('s455-tax', fmt.currency(s455));
+
+  if (yearEnd) {
+    const ye = new Date(yearEnd);
+    const deadline = new Date(ye);
+    deadline.setMonth(deadline.getMonth() + 9);
+    deadline.setDate(deadline.getDate() + 1);
+    UI.setText('s455-deadline', deadline.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}));
+    UI.setText('s455-repay-by', deadline.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}));
+
+    // Refund: 9 months after end of accounting period in which repaid
+    // Simplest: if repaid before deadline, refund available after next year-end + 9 months
+    const nextYE = new Date(ye); nextYE.setFullYear(nextYE.getFullYear() + 1);
+    const refundAvailable = new Date(nextYE); refundAvailable.setMonth(refundAvailable.getMonth() + 9);
+    document.getElementById('s455-refund-detail').innerHTML =
+      '<p class="text-sm text-muted">If you repay the loan <strong>before ' + deadline.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) + '</strong>, no s455 tax is due and no refund process is needed.</p>' +
+      '<p class="text-sm text-muted mt-8">If the loan remains outstanding at ' + deadline.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) + ' and the company pays s455 of ' + fmt.currency(s455) + ', you can reclaim it by writing to HMRC. The refund is due <strong>9 months after the end of the accounting period in which you repay the loan.</strong> For example, if the loan is repaid in the year ending ' + nextYE.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) + ', the refund is available from approximately ' + refundAvailable.toLocaleDateString('en-GB',{month:'long',year:'numeric'}) + '.</p>';
+  } else {
+    UI.setText('s455-deadline', '9 months + 1 day after year-end');
+    UI.setText('s455-repay-by', '9 months after year-end');
+    document.getElementById('s455-refund-detail').innerHTML = '<p class="text-sm text-muted">Enter your year-end date above to see exact refund timing.</p>';
+  }
+  UI.show('s455-result');
+}
+
+function calcBIK() {
+  const loan    = UI.numVal('bik-loan', 0);
+  const taxRate = parseFloat(document.getElementById('bik-rate').value);
+  if (loan <= 0) { alert('Please enter the average loan balance.'); return; }
+
+  const officialRate = 2.25;
+  const notional = fmt.round2(loan * officialRate / 100);
+  const personalTax = fmt.round2(notional * taxRate);
+  const class1a = fmt.round2(notional * 0.15);
+
+  UI.setText('bik-notional', fmt.currency(notional));
+  UI.setText('bik-tax', fmt.currency(personalTax));
+  UI.setText('bik-ni', fmt.currency(class1a));
+  UI.show('bik-result');
+}
+</script>
+</body>
+</html>
