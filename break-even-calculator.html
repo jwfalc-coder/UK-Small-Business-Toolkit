@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Break-Even Calculator for UK Small Business | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate your break-even point in units and revenue. Enter fixed costs, variable cost per unit, and selling price to find when your business becomes profitable, with a profit/loss chart.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/break-even-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Break-Even Calculator for UK Small Business | UK Small Business Toolkit">
+  <meta property="og:description" content="Find your break-even point in units and revenue with a profit/loss chart.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://YOURDOMAIN/" },
+      { "@type": "ListItem", "position": 2, "name": "Pricing & Profitability", "item": "https://YOURDOMAIN/#pricing-profitability" },
+      { "@type": "ListItem", "position": 3, "name": "Break-Even Calculator" }
+    ]
+  }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+        <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <div class="hero-text">
+      <nav class="breadcrumb" style="margin-bottom:8px;">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <a href="index.html#pricing-profitability">Pricing &amp; Profitability</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <span class="breadcrumb-current">Break-Even Calculator</span>
+      </nav>
+      <h1>Break-Even Calculator for UK Small Business</h1>
+      <p>Enter your fixed costs, variable cost per unit, and selling price to find the exact point at which your business covers all its costs. Includes a profit/loss chart and contribution margin analysis.</p>
+      <div class="hero-meta">
+        <span class="hero-badge">Pricing &amp; Profitability</span>
+        <span class="hero-badge slate">Updated for 2025/26</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-main">
+
+        <div class="card" id="inputs-card">
+          <div class="card-title">Enter your figures</div>
+
+          <div class="form-group">
+            <label class="form-label" for="fixed-costs">Total fixed costs (per period)</label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">&#163;</span>
+              <input type="number" id="fixed-costs" class="form-input input-with-prefix" placeholder="10000" min="0" step="0.01">
+            </div>
+            <div class="form-hint">Costs that do not change with output: rent, salaries, insurance, software subscriptions, loan repayments.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="variable-cost">Variable cost per unit</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="variable-cost" class="form-input input-with-prefix" placeholder="15.00" min="0" step="0.01">
+              </div>
+              <div class="form-hint">Costs that change with each unit produced or sold: materials, direct labour, packaging, sales commission.</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="selling-price">Selling price per unit</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="selling-price" class="form-input input-with-prefix" placeholder="40.00" min="0" step="0.01">
+              </div>
+              <div class="form-hint">The price you charge customers per unit, excluding VAT if applicable.</div>
+            </div>
+          </div>
+
+          <div class="btn-group mt-16">
+            <button class="btn btn--primary" onclick="calculate()">Calculate break-even</button>
+            <button class="btn btn--secondary" onclick="resetForm()">Reset</button>
+          </div>
+        </div>
+
+        <div id="results-section" class="hidden mt-24">
+
+          <div class="results-grid results-grid--4 mb-24">
+            <div class="result-card result-card--highlight">
+              <div class="result-label">Break-even units</div>
+              <div class="result-value" id="res-units">--</div>
+            </div>
+            <div class="result-card result-card--highlight">
+              <div class="result-label">Break-even revenue</div>
+              <div class="result-value" id="res-revenue">--</div>
+            </div>
+            <div class="result-card">
+              <div class="result-label">Contribution per unit</div>
+              <div class="result-value" id="res-contribution">--</div>
+            </div>
+            <div class="result-card">
+              <div class="result-label">Contribution margin</div>
+              <div class="result-value" id="res-margin">--</div>
+            </div>
+          </div>
+
+          <div class="card mb-24">
+            <div class="card-title">Break-even workings</div>
+            <div id="workings-detail"></div>
+          </div>
+
+          <div class="card mb-24">
+            <div class="card-title">Profit / loss chart</div>
+            <div class="chart-wrap">
+              <canvas id="be-chart"></canvas>
+            </div>
+            <p class="text-sm text-muted mt-8">The break-even point is where the revenue line crosses the total cost line. Units to the left represent a loss; units to the right represent profit.</p>
+          </div>
+
+          <div class="card mb-24">
+            <div class="card-title">Sensitivity analysis</div>
+            <p class="text-sm text-muted mb-12">How does your break-even point change at different selling prices?</p>
+            <div class="table-wrap">
+              <table class="data-table" id="sensitivity-table">
+                <thead><tr><th>Selling price</th><th>Contribution/unit</th><th>Break-even units</th><th>Break-even revenue</th></tr></thead>
+                <tbody id="sensitivity-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="disclaimer">
+            Results are estimates for guidance only. Not financial or legal advice. Consult a qualified accountant for advice tailored to your business.
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="card card--compact">
+          <div class="card-title">What is break-even?</div>
+          <p class="text-sm text-muted">The break-even point is the level of sales at which total revenue equals total costs, resulting in zero profit or loss. Above this point, every unit sold generates profit equal to the contribution margin per unit.</p>
+        </div>
+        <div class="card card--compact">
+          <div class="card-title">Contribution margin</div>
+          <p class="text-sm text-muted">Contribution per unit = selling price minus variable cost per unit. This is the amount each unit "contributes" towards covering fixed costs and then generating profit. Break-even units = fixed costs divided by contribution per unit.</p>
+        </div>
+        <div class="card card--compact">
+          <div class="card-title">Related tools</div>
+          <a href="profit-margin-calculator.html" class="sidebar-link">Profit Margin Calculator</a>
+          <a href="corporation-tax-calculator.html" class="sidebar-link">Corporation Tax Calculator</a>
+          <a href="sole-trader-vs-ltd.html" class="sidebar-link">Sole Trader vs Ltd</a>
+        </div>
+      </aside>
+    </div>
+
+    <section class="related-tools">
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="profit-margin-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="related-title">Profit Margin Calculator</div>
+          <div class="related-desc">Gross margin, net margin, markup, and industry benchmarks</div>
+        </a>
+        <a href="corporation-tax-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg></div>
+          <div class="related-title">Corporation Tax Calculator</div>
+          <div class="related-desc">Calculate your CT bill with full workings</div>
+        </a>
+        <a href="ltd-company-cost-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <div class="related-title">Ltd Company Cost Calculator</div>
+          <div class="related-desc">The true annual overhead of running a limited company</div>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+          <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+        </a>
+        <p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tax &amp; Finance</h4>
+        <a href="corporation-tax-calculator.html">Corporation Tax</a>
+        <a href="ltd-company-cost-calculator.html">Ltd Company Costs</a>
+        <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a>
+        <a href="business-mileage-calculator.html">Business Mileage</a>
+        <a href="capital-allowances-calculator.html">Capital Allowances</a>
+      </div>
+      <div class="footer-col">
+        <h4>VAT &amp; Invoicing</h4>
+        <a href="vat-calculator.html">VAT Calculator</a>
+        <a href="vat-return-calculator.html">VAT Return</a>
+        <a href="invoice-generator.html">Invoice Generator</a>
+        <a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a>
+      </div>
+      <div class="footer-col">
+        <h4>Compliance</h4>
+        <a href="companies-house-deadlines.html">CH Deadlines</a>
+        <a href="mtd-checker.html">MTD Checker</a>
+        <a href="break-even-calculator.html">Break-Even</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span>
+      <div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+    <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+    <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+    <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+  </div>
+</nav>
+
+<script src="utils.js"></script>
+<script>
+  let beChart = null;
+
+  function calculate() {
+    const fixed    = UI.numVal('fixed-costs', 0);
+    const variable = UI.numVal('variable-cost', 0);
+    const price    = UI.numVal('selling-price', 0);
+
+    if (fixed <= 0 || price <= 0) { alert('Please enter fixed costs and selling price.'); return; }
+    if (price <= variable) { alert('Selling price must be greater than variable cost per unit.'); return; }
+
+    const result = BreakEven.calculate(fixed, variable, price);
+    if (!result) { alert('Cannot calculate: selling price must be greater than variable cost.'); return; }
+
+    UI.setText('res-units', fmt.number(result.breakEvenUnits) + ' units');
+    UI.setText('res-revenue', fmt.currency(result.breakEvenRevenue));
+    UI.setText('res-contribution', fmt.currency(result.contributionPerUnit));
+    UI.setText('res-margin', fmt.pct(result.contributionMargin));
+
+    document.getElementById('workings-detail').innerHTML =
+      '<div class="calc-breakdown">' +
+      '<div class="calc-row"><span>Selling price per unit</span><span>' + fmt.currency(price) + '</span></div>' +
+      '<div class="calc-row text-warning"><span>Less variable cost per unit</span><span>minus ' + fmt.currency(variable) + '</span></div>' +
+      '<div class="calc-row"><span>Contribution per unit</span><span>' + fmt.currency(result.contributionPerUnit) + '</span></div>' +
+      '<div class="calc-row"><span>Fixed costs</span><span>' + fmt.currency(fixed) + '</span></div>' +
+      '<div class="calc-row calc-row--total"><span>Break-even units (fixed costs divided by contribution)</span><span>' + fmt.number(result.breakEvenUnits) + ' units</span></div>' +
+      '<div class="calc-row calc-row--total"><span>Break-even revenue (' + fmt.number(result.breakEvenUnits) + ' units x ' + fmt.currency(price) + ')</span><span>' + fmt.currency(result.breakEvenRevenue) + '</span></div>' +
+      '</div>';
+
+    renderChart(fixed, variable, price, result.breakEvenUnits);
+    renderSensitivity(fixed, variable, price);
+    UI.show('results-section');
+  }
+
+  function renderChart(fixed, variable, price, beUnits) {
+    const maxUnits = Math.ceil(beUnits * 2.2);
+    const data = BreakEven.chartData(fixed, variable, price, maxUnits);
+    const labels = data.map(d => d.units);
+    const revenue = data.map(d => d.revenue);
+    const totalCost = data.map(d => d.totalCost);
+
+    const ctx = document.getElementById('be-chart').getContext('2d');
+    if (beChart) beChart.destroy();
+    beChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Revenue',
+            data: revenue,
+            borderColor: '#15803d',
+            backgroundColor: 'rgba(21,128,61,0.06)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0,
+            pointRadius: 0,
+          },
+          {
+            label: 'Total costs',
+            data: totalCost,
+            borderColor: '#dc2626',
+            backgroundColor: 'rgba(220,38,38,0.06)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0,
+            pointRadius: 0,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: true, position: 'top' },
+          tooltip: {
+            callbacks: {
+              title: ctx => ctx[0].label + ' units',
+              label: ctx => ctx.dataset.label + ': ' + Number(ctx.parsed.y).toLocaleString('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 })
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { maxTicksLimit: 8, callback: v => labels[v] },
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            title: { display: true, text: 'Units sold' }
+          },
+          y: {
+            ticks: { callback: v => '&#163;' + (v >= 1000 ? (v/1000).toFixed(0)+'k' : v) },
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            title: { display: true, text: 'Amount (&#163;)' }
+          }
+        }
+      }
+    });
+  }
+
+  function renderSensitivity(fixed, variable, currentPrice) {
+    const steps = [-20, -10, 0, 10, 20];
+    let rows = '';
+    steps.forEach(pct => {
+      const p = parseFloat((currentPrice * (1 + pct/100)).toFixed(2));
+      if (p <= variable) { rows += '<tr><td>' + fmt.currency(p) + (pct !== 0 ? ' (' + (pct > 0 ? '+' : '') + pct + '%)' : ' (current)') + '</td><td class="text-muted">Below variable cost</td><td>n/a</td><td>n/a</td></tr>'; return; }
+      const r = BreakEven.calculate(fixed, variable, p);
+      const highlight = pct === 0 ? ' style="font-weight:600;background:var(--accent-muted);"' : '';
+      rows += '<tr' + highlight + '><td>' + fmt.currency(p) + (pct !== 0 ? ' (' + (pct > 0 ? '+' : '') + pct + '%)' : ' (current)') + '</td><td>' + fmt.currency(r.contributionPerUnit) + '</td><td>' + fmt.number(r.breakEvenUnits) + '</td><td>' + fmt.currency(r.breakEvenRevenue) + '</td></tr>';
+    });
+    document.getElementById('sensitivity-body').innerHTML = rows;
+  }
+
+  function resetForm() {
+    ['fixed-costs','variable-cost','selling-price'].forEach(id => document.getElementById(id).value = '');
+    UI.hide('results-section');
+    if (beChart) { beChart.destroy(); beChart = null; }
+  }
+</script>
+</body>
+</html>

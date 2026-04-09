@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Margin Calculator UK | UK Small Business Toolkit</title>
+  <meta name="description" content="Calculate gross margin, net margin, and markup for your UK business. Includes industry benchmark comparisons across retail, professional services, IT, construction, and more.">
+  <!-- <link rel="canonical" href="https://YOURDOMAIN/profit-margin-calculator.html"> -->
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Profit Margin Calculator UK | UK Small Business Toolkit">
+  <meta property="og:description" content="Calculate gross margin, net margin, and markup with UK industry benchmarks.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://YOURDOMAIN/" },
+      { "@type": "ListItem", "position": 2, "name": "Pricing & Profitability", "item": "https://YOURDOMAIN/#pricing-profitability" },
+      { "@type": "ListItem", "position": 3, "name": "Profit Margin Calculator" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+        <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    </div>
+    <div class="hero-text">
+      <nav class="breadcrumb" style="margin-bottom:8px;">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <a href="index.html#pricing-profitability">Pricing &amp; Profitability</a>
+        <span class="breadcrumb-sep">&#8250;</span>
+        <span class="breadcrumb-current">Profit Margin Calculator</span>
+      </nav>
+      <h1>Profit Margin Calculator UK</h1>
+      <p>Calculate gross profit margin, net profit margin, and markup percentage for your UK business. Compare your margins against industry benchmarks to see how you measure up.</p>
+      <div class="hero-meta">
+        <span class="hero-badge">Pricing &amp; Profitability</span>
+        <span class="hero-badge slate">With industry benchmarks</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-main">
+
+        <div class="card" id="inputs-card">
+          <div class="card-title">Enter your figures</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="revenue">Revenue (turnover)</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="revenue" class="form-input input-with-prefix" placeholder="200000" min="0" step="0.01">
+              </div>
+              <div class="form-hint">Total sales revenue for the period, excluding VAT.</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cogs">Cost of goods sold (COGS)</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">&#163;</span>
+                <input type="number" id="cogs" class="form-input input-with-prefix" placeholder="80000" min="0" step="0.01">
+              </div>
+              <div class="form-hint">Direct costs: materials, direct labour, cost of services delivered. Does not include overheads.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="operating-expenses">Operating expenses (overheads)</label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">&#163;</span>
+              <input type="number" id="operating-expenses" class="form-input input-with-prefix" placeholder="70000" min="0" step="0.01">
+            </div>
+            <div class="form-hint">Indirect costs: rent, salaries (non-direct), marketing, admin, software, utilities. Exclude tax and interest.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="industry">Your industry (for benchmark comparison)</label>
+            <select id="industry" class="form-select">
+              <option value="">-- Select industry --</option>
+            </select>
+          </div>
+
+          <div class="btn-group mt-16">
+            <button class="btn btn--primary" onclick="calculate()">Calculate margins</button>
+            <button class="btn btn--secondary" onclick="resetForm()">Reset</button>
+          </div>
+        </div>
+
+        <div id="results-section" class="hidden mt-24">
+
+          <div class="results-grid results-grid--3 mb-24">
+            <div class="result-card result-card--highlight">
+              <div class="result-label">Gross profit margin</div>
+              <div class="result-value" id="res-gross-pct">--</div>
+              <div class="result-sub" id="res-gross-amt">--</div>
+            </div>
+            <div class="result-card result-card--highlight">
+              <div class="result-label">Net profit margin</div>
+              <div class="result-value" id="res-net-pct">--</div>
+              <div class="result-sub" id="res-net-amt">--</div>
+            </div>
+            <div class="result-card">
+              <div class="result-label">Markup on cost</div>
+              <div class="result-value" id="res-markup">--</div>
+            </div>
+          </div>
+
+          <div class="card mb-24">
+            <div class="card-title">Profit and loss summary</div>
+            <div class="calc-breakdown">
+              <div class="calc-row"><span>Revenue</span><span id="pl-revenue">--</span></div>
+              <div class="calc-row text-warning"><span>Less cost of goods sold</span><span id="pl-cogs">--</span></div>
+              <div class="calc-row calc-row--sub"><span>Gross profit</span><span id="pl-gross">--</span></div>
+              <div class="calc-row text-warning"><span>Less operating expenses</span><span id="pl-opex">--</span></div>
+              <div class="calc-row calc-row--total"><span>Net profit (EBITDA approx.)</span><span id="pl-net">--</span></div>
+            </div>
+            <p class="text-sm text-muted mt-12">Note: net profit here is before interest, tax, depreciation, and amortisation (EBITDA approximation). Actual profit after CT will differ.</p>
+          </div>
+
+          <div id="benchmark-card" class="card mb-24 hidden">
+            <div class="card-title">Industry benchmark comparison</div>
+            <div id="benchmark-detail"></div>
+          </div>
+
+          <div class="card mb-24">
+            <div class="card-title">UK industry benchmarks</div>
+            <p class="text-sm text-muted mb-12">Typical gross and net margins by sector. These are approximate averages and vary widely within each sector.</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Industry</th><th>Typical gross margin</th><th>Typical net margin</th></tr></thead>
+                <tbody id="benchmarks-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="disclaimer">
+            Results are estimates for guidance only. Industry benchmarks are approximate sector averages. Not financial or legal advice. Consult a qualified accountant for advice tailored to your business.
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="card card--compact">
+          <div class="card-title">Gross vs net margin</div>
+          <p class="text-sm text-muted"><strong>Gross margin</strong> = (Revenue minus COGS) divided by Revenue. Shows how efficiently you deliver your product or service. <strong>Net margin</strong> = (Revenue minus COGS minus Overheads) divided by Revenue. Shows overall business profitability after all operating costs.</p>
+        </div>
+        <div class="card card--compact">
+          <div class="card-title">Margin vs markup</div>
+          <p class="text-sm text-muted"><strong>Margin</strong> is profit as a percentage of selling price. <strong>Markup</strong> is profit as a percentage of cost. A 50% markup gives a 33.3% margin. A 100% markup gives a 50% margin. They are not interchangeable.</p>
+        </div>
+        <div class="card card--compact">
+          <div class="card-title">Related tools</div>
+          <a href="break-even-calculator.html" class="sidebar-link">Break-Even Calculator</a>
+          <a href="corporation-tax-calculator.html" class="sidebar-link">Corporation Tax Calculator</a>
+          <a href="ltd-company-cost-calculator.html" class="sidebar-link">Ltd Company Cost Calculator</a>
+        </div>
+      </aside>
+    </div>
+
+    <section class="related-tools">
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="break-even-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="related-title">Break-Even Calculator</div>
+          <div class="related-desc">Find the exact point your business becomes profitable</div>
+        </a>
+        <a href="sole-trader-vs-ltd.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="related-title">Sole Trader vs Ltd</div>
+          <div class="related-desc">Compare net take-home across business structures</div>
+        </a>
+        <a href="corporation-tax-calculator.html" class="related-card">
+          <div class="related-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg></div>
+          <div class="related-title">Corporation Tax Calculator</div>
+          <div class="related-desc">Calculate your CT bill with full workings</div>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <div class="logo-mark"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h14v2H3V4zm0 5h10v2H3V9zm0 5h12v2H3v-2z"/></svg></div>
+          <div class="logo-text">UK Small Business Toolkit<span>Free tools for UK business owners</span></div>
+        </a>
+        <p>Free calculators and tools for UK limited company directors, sole traders, freelancers, and small business owners.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tax &amp; Finance</h4>
+        <a href="corporation-tax-calculator.html">Corporation Tax</a>
+        <a href="ltd-company-cost-calculator.html">Ltd Company Costs</a>
+        <a href="sole-trader-vs-ltd.html">Sole Trader vs Ltd</a>
+        <a href="business-mileage-calculator.html">Business Mileage</a>
+        <a href="capital-allowances-calculator.html">Capital Allowances</a>
+      </div>
+      <div class="footer-col">
+        <h4>VAT &amp; Invoicing</h4>
+        <a href="vat-calculator.html">VAT Calculator</a>
+        <a href="vat-return-calculator.html">VAT Return</a>
+        <a href="invoice-generator.html">Invoice Generator</a>
+        <a href="flat-rate-scheme-calculator.html">Flat Rate Scheme</a>
+      </div>
+      <div class="footer-col">
+        <h4>Compliance</h4>
+        <a href="companies-house-deadlines.html">CH Deadlines</a>
+        <a href="mtd-checker.html">MTD Checker</a>
+        <a href="break-even-calculator.html">Break-Even</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2025 UK Small Business Toolkit. For guidance only, not professional advice.</span>
+      <div style="display:flex;gap:16px;"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <a href="corporation-tax-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>Tax</a>
+    <a href="vat-calculator.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>VAT</a>
+    <a href="companies-house-deadlines.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines</a>
+    <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+  </div>
+</nav>
+
+<script src="utils.js"></script>
+<script>
+  // Populate industry select
+  const industrySelect = document.getElementById('industry');
+  Object.keys(Margin.INDUSTRY_BENCHMARKS).sort().forEach(ind => {
+    const opt = document.createElement('option');
+    opt.value = ind;
+    opt.textContent = ind;
+    industrySelect.appendChild(opt);
+  });
+
+  // Populate full benchmarks table
+  const benchBody = document.getElementById('benchmarks-table-body');
+  Object.entries(Margin.INDUSTRY_BENCHMARKS).forEach(([ind, bm]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + ind + '</td><td>' + bm.gross + '%</td><td>' + bm.net + '%</td>';
+    benchBody.appendChild(tr);
+  });
+
+  function calculate() {
+    const revenue  = UI.numVal('revenue', 0);
+    const cogs     = UI.numVal('cogs', 0);
+    const opex     = UI.numVal('operating-expenses', 0);
+    const industry = document.getElementById('industry').value;
+
+    if (revenue <= 0) { alert('Please enter a revenue figure.'); return; }
+
+    const result = Margin.calculate(revenue, cogs, opex);
+
+    UI.setText('res-gross-pct', fmt.pct(result.grossMargin));
+    UI.setText('res-gross-amt', 'Gross profit: ' + fmt.currency(result.grossProfit));
+    UI.setText('res-net-pct', fmt.pct(result.netMargin));
+    UI.setText('res-net-amt', 'Net profit: ' + fmt.currency(result.netProfit));
+    UI.setText('res-markup', fmt.pct(result.markup));
+
+    UI.setText('pl-revenue', fmt.currency(revenue));
+    UI.setText('pl-cogs', 'minus ' + fmt.currency(cogs));
+    UI.setText('pl-gross', fmt.currency(result.grossProfit) + ' (' + fmt.pct(result.grossMargin) + ')');
+    UI.setText('pl-opex', 'minus ' + fmt.currency(opex));
+
+    const netEl = document.getElementById('pl-net');
+    netEl.textContent = fmt.currency(result.netProfit) + ' (' + fmt.pct(result.netMargin) + ')';
+    netEl.style.color = result.netProfit < 0 ? 'var(--error)' : 'var(--success)';
+
+    if (industry && Margin.INDUSTRY_BENCHMARKS[industry]) {
+      const bm = Margin.INDUSTRY_BENCHMARKS[industry];
+      const gmDiff = result.grossMargin - bm.gross;
+      const nmDiff = result.netMargin - bm.net;
+
+      const gmBadge = gmDiff >= 0
+        ? '<span class="badge badge--green">+' + gmDiff.toFixed(1) + '% above benchmark</span>'
+        : '<span class="badge badge--red">' + gmDiff.toFixed(1) + '% below benchmark</span>';
+      const nmBadge = nmDiff >= 0
+        ? '<span class="badge badge--green">+' + nmDiff.toFixed(1) + '% above benchmark</span>'
+        : '<span class="badge badge--red">' + nmDiff.toFixed(1) + '% below benchmark</span>';
+
+      document.getElementById('benchmark-detail').innerHTML =
+        '<p class="text-sm text-muted mb-16">Comparing your margins against typical ' + industry + ' businesses:</p>' +
+        '<div class="table-wrap"><table class="data-table"><thead><tr><th>Metric</th><th>Your figure</th><th>Sector benchmark</th><th>Difference</th></tr></thead><tbody>' +
+        '<tr><td>Gross margin</td><td>' + fmt.pct(result.grossMargin) + '</td><td>' + bm.gross + '%</td><td>' + gmBadge + '</td></tr>' +
+        '<tr><td>Net margin</td><td>' + fmt.pct(result.netMargin) + '</td><td>' + bm.net + '%</td><td>' + nmBadge + '</td></tr>' +
+        '</tbody></table></div>' +
+        '<p class="text-sm text-muted mt-12">Benchmarks are approximate sector averages. Individual businesses vary significantly based on scale, business model, and cost structure.</p>';
+      UI.show('benchmark-card');
+    } else {
+      UI.hide('benchmark-card');
+    }
+
+    UI.show('results-section');
+  }
+
+  function resetForm() {
+    ['revenue','cogs','operating-expenses'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('industry').value = '';
+    UI.hide('results-section');
+    UI.hide('benchmark-card');
+  }
+</script>
+</body>
+</html>
