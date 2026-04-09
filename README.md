@@ -91,18 +91,18 @@ UK-Small-Business-Toolkit/
 ├── break-even-calculator.html              # BUILT - Session 1
 ├── profit-margin-calculator.html           # BUILT - Session 1
 │
-├── business-mileage-calculator.html        # NOT YET BUILT (Session 2)
-├── capital-allowances-calculator.html      # NOT YET BUILT (Session 2)
-├── vat-return-calculator.html              # NOT YET BUILT (Session 2)
-├── flat-rate-scheme-calculator.html        # NOT YET BUILT (Session 2)
-├── late-filing-penalty-calculator.html     # NOT YET BUILT (Session 2)
-├── business-structure-guide.html           # NOT YET BUILT (Session 2)
-├── statutory-pay-calculator.html           # NOT YET BUILT (Session 2)
-├── national-living-wage-checker.html       # NOT YET BUILT (Session 2)
-└── director-loan-calculator.html           # NOT YET BUILT (Session 2)
+├── business-mileage-calculator.html        # BUILT - Session 2
+├── capital-allowances-calculator.html      # BUILT - Session 2
+├── vat-return-calculator.html              # BUILT - Session 2
+├── flat-rate-scheme-calculator.html        # BUILT - Session 2
+├── late-filing-penalty-calculator.html     # BUILT - Session 2
+├── business-structure-guide.html           # BUILT - Session 2
+├── statutory-pay-calculator.html           # BUILT - Session 2
+├── national-living-wage-checker.html       # BUILT - Session 2
+└── director-loan-calculator.html           # BUILT - Session 2
 ```
 
-**Session 1 total: 9 tool pages + 4 supporting pages + 5 config/asset files = 18 files.**
+**Session 1 total: 18 tool pages + 4 supporting pages + 5 config/asset files = 27 files.**
 
 ---
 
@@ -126,15 +126,15 @@ UK-Small-Business-Toolkit/
 
 | # | Tool | File | Group |
 |---|------|------|-------|
-| 10 | Business Mileage Calculator | `business-mileage-calculator.html` | 10 |
-| 11 | Capital Allowances Calculator | `capital-allowances-calculator.html` | 10 |
-| 12 | VAT Return Calculator | `vat-return-calculator.html` | 11 |
-| 13 | Flat Rate Scheme Calculator | `flat-rate-scheme-calculator.html` | 11 |
-| 14 | Late Filing Penalty Calculator | `late-filing-penalty-calculator.html` | 12 |
-| 15 | Business Structure Guide | `business-structure-guide.html` | 12 |
-| 16 | Statutory Pay Calculator | `statutory-pay-calculator.html` | 13 |
-| 17 | National Living Wage Checker | `national-living-wage-checker.html` | 13 |
-| 18 | Director Loan Account Calculator | `director-loan-calculator.html` | 13 |
+| 10 | Business Mileage Calculator | `business-mileage-calculator.html` | BUILT |
+| 11 | Capital Allowances Calculator | `capital-allowances-calculator.html` | BUILT |
+| 12 | VAT Return Calculator | `vat-return-calculator.html` | BUILT |
+| 13 | Flat Rate Scheme Calculator | `flat-rate-scheme-calculator.html` | BUILT |
+| 14 | Late Filing Penalty Calculator | `late-filing-penalty-calculator.html` | BUILT |
+| 15 | Business Structure Guide | `business-structure-guide.html` | BUILT |
+| 16 | Statutory Pay Calculator | `statutory-pay-calculator.html` | BUILT |
+| 17 | National Living Wage Checker | `national-living-wage-checker.html` | BUILT |
+| 18 | Director Loan Account Calculator | `director-loan-calculator.html` | BUILT |
 
 ---
 
@@ -202,7 +202,7 @@ All helpers are available globally on every tool page via `<script src="utils.js
 
 | Item | Status |
 |------|--------|
-| Session 2 tools (9 remaining) | Not yet built |
+| Session 2 tools (9 remaining) | COMPLETE |
 | Custom domain | Pending purchase |
 | Canonical tags | Commented out on all pages -- update once domain confirmed |
 | Formspree endpoint | Replace YOUR_FORM_ID in contact.html |
@@ -281,3 +281,4 @@ Run these checks to confirm accuracy before any deployment:
 |---------|------|---------------|
 | Session 1 (laptop) | April 2025 | Design confirmed (Option C), global files, homepage, Groups 3 and 4 (CT, Ltd costs, sole trader vs Ltd, VAT calculator, invoice generator) |
 | Session 1 (continued, phone) | April 2025 | Groups 5 and 6 (CH deadlines, MTD checker, break-even, profit margin), supporting pages, config files, README |
+| Session 2 (phone) | April 2025 | All 9 remaining tools (mileage, capital allowances, VAT return, FRS, late filing penalty, business structure guide, statutory pay, NLW checker, director loan), sitemap updated to all 18 tools, README updated |
