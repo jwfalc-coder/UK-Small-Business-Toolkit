@@ -263,27 +263,6 @@ main {
   color: var(--text-secondary);
 }
 
-/* Mobile nav open state */
-@media (max-width: 640px) {
-  .site-nav.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 16px 12px;
-    gap: 2px;
-    z-index: 99;
-  }
-  .site-nav.open a {
-    padding: 10px 12px;
-    border-radius: var(--r-sm);
-  }
-}
-
 /* ============================================================
    CONTENT LAYOUT (about, privacy, contact pages)
    ============================================================ */
@@ -1450,6 +1429,25 @@ textarea {
   .home-hero h1 { font-size: 1.8rem; }
 
   .site-nav { display: none; }
+  .site-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--bg-white);
+    border-bottom: 2px solid var(--border);
+    padding: 8px 16px 16px;
+    gap: 2px;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .site-nav.open a {
+    padding: 12px 12px;
+    border-radius: var(--r-sm);
+    font-size: 1rem;
+  }
   .nav-toggle { display: flex; }
 
   .mobile-nav { display: block; }
