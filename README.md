@@ -112,9 +112,10 @@ UK-Small-Business-Toolkit/
 - [x] WebPage schema on supporting pages
 - [x] WebApplication schema on all tool pages (applicationCategory: BusinessApplication)
 - [x] Domain set to smallbusinesstoolkit.uk throughout
-- [ ] FAQPage schema on tool pages (high SEO priority)
-- [ ] BreadcrumbList schema on tool pages
-- [ ] `llms.txt` file in root
+- [x] FAQPage schema -- all 18 tool pages (5 questions each)
+- [x] BreadcrumbList schema -- all 18 tool pages
+- [x] `llms.txt` file in root
+- [x] FAQ CSS added to `styles.css`
 
 ---
 
@@ -128,9 +129,9 @@ UK-Small-Business-Toolkit/
 - [ ] Privacy policy update once AdSense publisher ID confirmed
 
 ### Content
-- [ ] FAQPage schema on all tool pages (high SEO priority - rich results)
-- [ ] BreadcrumbList schema on all tool pages
-- [ ] `llms.txt` file in root
+- [x] FAQPage schema -- all 18 tool pages (5 questions each)
+- [x] BreadcrumbList schema -- all 18 tool pages
+- [x] `llms.txt` file in root
 - [ ] `mtd-checker.html` — verify content is complete
 
 ---
