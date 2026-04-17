@@ -1,0 +1,45 @@
+# UK Small Business Toolkit
+> Free tools and calculators for UK small business owners, sole traders, and limited company directors.
+> All figures use 2025/26 HMRC rates. Independently operated. Not financial or legal advice.
+
+## About
+UK Small Business Toolkit provides 18 free tools across 5 categories covering tax, VAT, business structure, finance, payroll, and compliance. Every tool uses current UK rates and is self-contained — no login, no data collection, no paywalls.
+
+## Tool Index
+
+### Tax & Compliance
+- Corporation Tax Calculator UK 2025/26: /corporation-tax-calculator.html
+- VAT Calculator UK: /vat-calculator.html
+- VAT Return Calculator: /vat-return-calculator.html
+- Flat Rate Scheme Calculator: /flat-rate-scheme-calculator.html
+- Capital Allowances Calculator 2025/26: /capital-allowances-calculator.html
+
+### Business Structure
+- Sole Trader vs Ltd Company Calculator: /sole-trader-vs-ltd.html
+- Ltd Company Cost Calculator: /ltd-company-cost-calculator.html
+- Business Structure Guide UK: /business-structure-guide.html
+
+### Finance & Cashflow
+- Profit Margin Calculator: /profit-margin-calculator.html
+- Break-Even Calculator: /break-even-calculator.html
+- Invoice Generator UK: /invoice-generator.html
+- Director Loan Account Calculator: /director-loan-calculator.html
+
+### Payroll & HR
+- Business Mileage Calculator UK 2025/26: /business-mileage-calculator.html
+- Statutory Pay Calculator: /statutory-pay-calculator.html
+- National Living Wage Checker 2025/26: /national-living-wage-checker.html
+- MTD Checker: /mtd-checker.html
+
+### Deadlines & Compliance
+- Companies House Deadlines Checker: /companies-house-deadlines.html
+- Late Filing Penalty Calculator: /late-filing-penalty-calculator.html
+
+## Supporting Pages
+- Homepage (all tools): /index.html
+- About: /about.html
+- Privacy Policy: /privacy.html
+- Contact: /contact.html
+
+## Rate Update Policy
+All tax rates, NMW rates, and statutory pay figures updated each April following the new UK tax year.
