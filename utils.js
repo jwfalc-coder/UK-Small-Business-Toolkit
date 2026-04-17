@@ -211,7 +211,7 @@ const StructureCalc = {
     const ctResult = CT.calculate(Math.max(0, profitAfterSalary));
     const profitAfterCT = profitAfterSalary - ctResult.tax;
 
-    // Dividend tax (2024/25: £500 allowance, then 8.75%/33.75%/39.35%)
+    // Dividend tax (2024/25: £500 allowance, then 10.75%/35.75%/39.35%)
     const divAllowance = 500;
     const dividends = profitAfterCT;
     const itOnSalary = IT.calculateIT(salary).tax;
@@ -404,7 +404,7 @@ const VAT = {
    STATUTORY PAY RATES (2024/25)
    ============================================================ */
 const StatutoryPay = {
-  SSP_RATE: 116.75,          // per week
+  SSP_RATE: 123.25,          // per week (from 6 April 2026)
   SSP_WAITING_DAYS: 3,
   SSP_QUALIFYING_DAYS: 7,    // minimum average working week qualifier
   SSP_MAX_WEEKS: 28,
@@ -458,10 +458,10 @@ const StatutoryPay = {
    ============================================================ */
 const NMW = {
   RATES: [
-    { label: '21 and over (NLW)', minAge: 21, maxAge: null, rate: 12.21 },
-    { label: '18 to 20',          minAge: 18, maxAge: 20,   rate: 10.00 },
-    { label: 'Under 18',          minAge: 0,  maxAge: 17,   rate: 7.55  },
-    { label: 'Apprentice',        minAge: 0,  maxAge: null,  rate: 7.55, apprentice: true },
+    { label: '21 and over (NLW)', minAge: 21, maxAge: null, rate: 12.71 },
+    { label: '18 to 20',          minAge: 18, maxAge: 20,   rate: 10.85 },
+    { label: 'Under 18',          minAge: 0,  maxAge: 17,   rate: 8.00  },
+    { label: 'Apprentice',        minAge: 0,  maxAge: null,  rate: 8.00, apprentice: true },
   ],
 
   /**
