@@ -6,37 +6,32 @@
 
 ## 1. Project Overview
 
-UK Small Business Toolkit is a free multi-page platform of tools for UK limited company directors, sole traders, freelancers, and small business owners. 18 tools across 5 categories, each on its own dedicated HTML page, monetised via Google AdSense.
+UK Small Business Toolkit is a free multi-page platform of tools for UK limited company directors, sole traders, freelancers, and small business owners. 18 tools across 5 categories, monetised via Google AdSense. It is the fourth site in a portfolio of AdSense-monetised UK tool sites.
 
-**Goal:** Generate passive ad revenue as part of the wider passive income system (AdSense revenue -> savings fund -> trading account -> Stocks and Shares ISA -> Ltd company incorporation at ~year 2.5).
+**Goal:** Generate passive ad revenue as part of the wider passive income system (AdSense revenue -> trading account -> Stocks and Shares ISA -> Ltd company incorporation at ~year 2.5).
 
-**Tech stack:** Self-contained static HTML files. No framework. No build step. Chart.js loaded from jsDelivr CDN on pages that need charts. Pure HTML/CSS/JS. Deployed via GitHub Pages, then Netlify once a domain is acquired.
+**Tech stack:** Self-contained static HTML files. No framework. No build step. Chart.js loaded from jsDelivr CDN on pages that need charts. Deployed via GitHub -> Cloudflare Pages.
 
-**Repository:** `https://github.com/jwfalc-coder/UK-Small-Business-Toolkit` (public, required for GitHub Pages free tier)
+**Repository:** `https://github.com/jwfalc-coder/UK-Small-Business-Toolkit` (private)
 
-**Live URL:** `https://jwfalc-coder.github.io/UK-Small-Business-Toolkit/` (GitHub Pages, pending custom domain)
-
-**Git auth for sessions:**
-```bash
-git clone https://YOUR_PAT@github.com/jwfalc-coder/UK-Small-Business-Toolkit.git
-git config user.email "claude@anthropic.com"
-git config user.name "Claude"
-```
-
-**Portfolio context:** This is Site 4 in Josh's AdSense portfolio.
-
-| Site | Repo | Status |
-|------|------|--------|
-| ClearCost UK | `jwfalc-coder/clear-cost-uk` | Built, awaiting Netlify deploy |
-| Tax Toolkit UK | `jwfalc-coder/tax-toolkit-uk` | Built, awaiting Netlify deploy |
-| Pension Planner UK | `jwfalc-coder/Pension-Planner` | Partially built |
-| UK Small Business Toolkit | `jwfalc-coder/UK-Small-Business-Toolkit` | Session 1 complete (see below) |
+**Live URL:** https://smallbusinesstoolkit.uk — deployed via Cloudflare Pages (April 2026). DNS managed by Cloudflare.
 
 ---
 
-## 2. Design System (Confirmed: Option C)
+## 2. Portfolio Context
 
-Design was confirmed as **Option C: Modern B2B Product** before build began. Do not change the design without explicit instruction from Josh.
+| Site | Domain | Repo | Status |
+|------|--------|------|--------|
+| ClearCost UK | clearcost.uk | `jwfalc-coder/clear-cost-uk` | Live (Cloudflare Pages) |
+| Tax Toolkit UK | taxtoolkit.uk | `jwfalc-coder/tax-toolkit-uk` | Live (Cloudflare Pages) |
+| Pension Planner UK | pension-planner.co.uk | `jwfalc-coder/Pension-Planner` | Live (Cloudflare Pages) |
+| UK Small Business Toolkit | smallbusinesstoolkit.uk | `jwfalc-coder/UK-Small-Business-Toolkit` | Live (Cloudflare Pages) |
+
+---
+
+## 3. Design System (Confirmed: Option C - Modern B2B Product)
+
+Do not change the design without explicit instruction from Josh.
 
 | Token | Value |
 |-------|-------|
@@ -59,12 +54,12 @@ Design was confirmed as **Option C: Modern B2B Product** before build began. Do 
 - No gradient text or gradient logo marks
 - No card or panel gradient overlays
 - No emoji used as icons (SVG inline only)
-- No em dashes in any visible text (use commas or hyphens)
+- No em dashes in any visible text (commas or hyphens)
 - No lorem ipsum, no placeholder text, no TODO comments in production files
 
 ---
 
-## 3. Repository Structure
+## 4. Repository Structure
 
 ```
 UK-Small-Business-Toolkit/
@@ -76,209 +71,158 @@ UK-Small-Business-Toolkit/
 ├── styles.css                              # Full design system (Option C)
 ├── utils.js                                # Shared JS: CT, IT, VAT, Mileage, Statutory Pay, NMW, CHDeadlines, LFP, CapAllowances, BreakEven, Margin, MTD, LatePayment
 ├── _template.html                          # Blank tool page scaffold
-├── _redirects                              # Netlify redirect rules
+├── _redirects
 ├── robots.txt
-├── sitemap.xml                             # YOURDOMAIN placeholder -- update when domain purchased
-├── .nojekyll                               # Required for GitHub Pages
+├── sitemap.xml
+├── .nojekyll
 │
-├── corporation-tax-calculator.html         # BUILT - Session 1
-├── ltd-company-cost-calculator.html        # BUILT - Session 1
-├── sole-trader-vs-ltd.html                 # BUILT - Session 1
-├── vat-calculator.html                     # BUILT - Session 1
-├── invoice-generator.html                  # BUILT - Session 1
-├── companies-house-deadlines.html          # BUILT - Session 1
-├── mtd-checker.html                        # BUILT - Session 1
-├── break-even-calculator.html              # BUILT - Session 1
-├── profit-margin-calculator.html           # BUILT - Session 1
+├── corporation-tax-calculator.html         # Tax & Compliance (5 tools)
+├── vat-calculator.html
+├── vat-return-calculator.html
+├── flat-rate-scheme-calculator.html
+├── capital-allowances-calculator.html
 │
-├── business-mileage-calculator.html        # BUILT - Session 2
-├── capital-allowances-calculator.html      # BUILT - Session 2
-├── vat-return-calculator.html              # BUILT - Session 2
-├── flat-rate-scheme-calculator.html        # BUILT - Session 2
-├── late-filing-penalty-calculator.html     # BUILT - Session 2
-├── business-structure-guide.html           # BUILT - Session 2
-├── statutory-pay-calculator.html           # BUILT - Session 2
-├── national-living-wage-checker.html       # BUILT - Session 2
-└── director-loan-calculator.html           # BUILT - Session 2
+├── sole-trader-vs-ltd.html                 # Business Structure (3 tools)
+├── ltd-company-cost-calculator.html
+├── business-structure-guide.html
+│
+├── profit-margin-calculator.html           # Finance & Cashflow (4 tools)
+├── break-even-calculator.html
+├── invoice-generator.html
+├── director-loan-calculator.html
+│
+├── business-mileage-calculator.html        # Payroll & HR (4 tools)
+├── statutory-pay-calculator.html
+├── national-living-wage-checker.html
+├── employer-cost-calculator.html (if present)
+│
+├── companies-house-deadlines.html          # Deadlines & Compliance (2 tools)
+└── late-filing-penalty-calculator.html
 ```
 
-**Session 1 total: 18 tool pages + 4 supporting pages + 5 config/asset files = 27 files.**
+---
+
+## 5. SEO Status (April 2026)
+
+- [x] Canonical tags on all pages (https://smallbusinesstoolkit.uk/...)
+- [x] OG tags on all pages
+- [x] Meta descriptions trimmed to under 160 chars
+- [x] Em dashes removed from all pages
+- [x] WebSite schema on index.html
+- [x] WebPage schema on supporting pages
+- [x] WebApplication schema on all tool pages (applicationCategory: BusinessApplication)
+- [x] Domain set to smallbusinesstoolkit.uk throughout
+- [ ] FAQPage schema on tool pages (high SEO priority)
+- [ ] BreadcrumbList schema on tool pages
+- [ ] `llms.txt` file in root
 
 ---
 
-## 4. Tools Status
+## 6. What Still Needs Doing
 
-### Session 1 complete (9 MVP tools)
+### Before AdSense application
+- [ ] Cookie consent banner (needs GA4 measurement ID + AdSense publisher ID)
+- [ ] GA4 tracking script on all pages (gated behind consent)
+- [ ] `ads.txt` in root (needs AdSense publisher ID)
+- [ ] Formspree endpoint in contact.html (replace YOUR_FORM_ID)
+- [ ] Privacy policy update once AdSense publisher ID confirmed
 
-| # | Tool | File | Status |
-|---|------|------|--------|
-| 1 | Corporation Tax Calculator | `corporation-tax-calculator.html` | BUILT |
-| 2 | Ltd Company Cost Calculator | `ltd-company-cost-calculator.html` | BUILT |
-| 3 | Sole Trader vs Ltd Company | `sole-trader-vs-ltd.html` | BUILT |
-| 4 | VAT Calculator | `vat-calculator.html` | BUILT |
-| 5 | Invoice Generator | `invoice-generator.html` | BUILT |
-| 6 | Companies House Deadline Tracker | `companies-house-deadlines.html` | BUILT |
-| 7 | Making Tax Digital Checker | `mtd-checker.html` | BUILT |
-| 8 | Break-Even Calculator | `break-even-calculator.html` | BUILT |
-| 9 | Profit Margin Calculator | `profit-margin-calculator.html` | BUILT |
-
-### Session 2 to build (9 remaining tools)
-
-| # | Tool | File | Group |
-|---|------|------|-------|
-| 10 | Business Mileage Calculator | `business-mileage-calculator.html` | BUILT |
-| 11 | Capital Allowances Calculator | `capital-allowances-calculator.html` | BUILT |
-| 12 | VAT Return Calculator | `vat-return-calculator.html` | BUILT |
-| 13 | Flat Rate Scheme Calculator | `flat-rate-scheme-calculator.html` | BUILT |
-| 14 | Late Filing Penalty Calculator | `late-filing-penalty-calculator.html` | BUILT |
-| 15 | Business Structure Guide | `business-structure-guide.html` | BUILT |
-| 16 | Statutory Pay Calculator | `statutory-pay-calculator.html` | BUILT |
-| 17 | National Living Wage Checker | `national-living-wage-checker.html` | BUILT |
-| 18 | Director Loan Account Calculator | `director-loan-calculator.html` | BUILT |
+### Content
+- [ ] FAQPage schema on all tool pages (high SEO priority - rich results)
+- [ ] BreadcrumbList schema on all tool pages
+- [ ] `llms.txt` file in root
+- [ ] `mtd-checker.html` — verify content is complete
 
 ---
 
-## 5. Key Technical Patterns
+## 7. Deployment
 
-**Writing files:** Always use Python `open()`/`write()` rather than shell heredocs. Heredocs are unreliable for HTML/CSS containing single quotes and special characters.
+### Cloudflare Pages (live April 2026)
+- Repo: `jwfalc-coder/UK-Small-Business-Toolkit` connected to Cloudflare Pages
+- Build command: `exit 0`
+- Build output directory: root `/`
+- Custom domain: `smallbusinesstoolkit.uk` - DNS managed by Cloudflare
+- Auto-deploys on every push to `main`
+
+```
+Edit -> git commit -> git push origin main -> Cloudflare auto-deploys
+```
+
+---
+
+## 8. File Naming Conventions
+
+- Tool pages: `[descriptor]-calculator.html`, `[descriptor]-checker.html`, `[descriptor]-guide.html` (kebab-case)
+- Supporting pages: `about.html`, `privacy.html`, `contact.html`, `404.html`
+- No spaces. No uppercase. No underscores.
+
+---
+
+## 9. Modifying Existing Pages
+
+Use Python `open()`/`write()` for all HTML edits. Never shell heredocs.
 
 ```python
 with open('filename.html', 'r') as f: src = f.read()
-new_src = src.replace('old_string', 'new_string')
+new_src = src.replace('unique_string_to_find', 'replacement_string')
 with open('filename.html', 'w') as f: f.write(new_src)
 ```
 
-**Em dash check before every push:**
+Sanity checks before every push:
 ```python
 import re
-src = open('file.html').read()
-print(len(re.findall(r' \u2014 ', src)))  # Must be 0
+with open('filename.html') as f: src = f.read()
+assert '\u2014' not in src, 'Em dash found'
+assert 'lorem ipsum' not in src.lower(), 'Lorem ipsum found'
+assert 'TODO' not in src, 'TODO found'
+assert 'YOURDOMAIN' not in src, 'Placeholder domain found'
 ```
-
-**Git push pattern:**
-```bash
-git config user.email "claude@anthropic.com"
-git config user.name "Claude"
-git add <files>
-git commit -m "message"
-git pull --rebase origin main  # if remote may have diverged
-git push origin main
-```
-
-**api.github.com is blocked** in Claude Code sessions. Use git clone/push with PAT embedded in remote URL only.
-
-**Chart.js CDN:** `https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js`
-
-**.nojekyll is mandatory** in the repo root for GitHub Pages to serve static HTML without Jekyll processing.
 
 ---
 
-## 6. utils.js — What Is Available
-
-All helpers are available globally on every tool page via `<script src="utils.js"></script>`.
-
-| Object | Key methods / properties |
-|--------|--------------------------|
-| `fmt` | `currency(n)`, `pct(n)`, `number(n)`, `round2(n)` |
-| `CT` | `calculate(profit, associatedCompanies)`, `chartData(maxProfit, steps)` |
-| `IT` | `calculateIT(income)`, `calculateNI4(profit)`, `employerNI(salary)` |
-| `StructureCalc` | `soleTrader(profit)`, `limitedCompany(profit, salary)`, `breakeven()` |
-| `Mileage` | `calculate(miles, vehicle)`, `taxRelief(amount, marginalRate)` |
-| `VAT` | `addVAT(net, rate)`, `removeVAT(gross, rate)`, `FRS_RATES{}`, `compareFRS(...)` |
-| `StatutoryPay` | `calculateSSP(daysOff, daysPerWeek)`, `calculateSMP(weeklyAWE)` |
-| `NMW` | `getRate(age, isApprentice)`, `check(hourlyRate, age, isApprentice)` |
-| `CHDeadlines` | `calculate(incorporationDate, yearEndDate)` |
-| `LFP` | `calculate(daysLate, consecutiveLate)` |
-| `CapAllowances` | `calculate(cost, assetType)`, `ASSET_TYPES{}`, `AIA_LIMIT` |
-| `BreakEven` | `calculate(fixed, variable, price)`, `chartData(...)` |
-| `Margin` | `calculate(revenue, cogs, opex)`, `INDUSTRY_BENCHMARKS{}` |
-| `MTD` | `checkITSA(totalIncome)`, `ITSA_THRESHOLDS[]` |
-| `LatePayment` | `calculate(amount, daysLate)`, `BOE_BASE_RATE` |
-| `UI` | `setText(id, val)`, `setHTML(id, html)`, `show(id)`, `hide(id)`, `numVal(id)`, `strVal(id)`, `initTabs()`, `deadlineBadge(days)` |
-
----
-
-## 7. Pending Tasks (Pre Go-Live)
+## 10. Known Issues & Placeholders
 
 | Item | Status |
 |------|--------|
-| Session 2 tools (9 remaining) | COMPLETE |
-| Custom domain | Pending purchase |
-| Canonical tags | Commented out on all pages -- update once domain confirmed |
-| Formspree endpoint | Replace YOUR_FORM_ID in contact.html |
-| Cookie consent banner | Build once AdSense publisher ID confirmed |
-| ads.txt | Add once publisher ID issued |
-| Favicon | Not yet created |
-| FAQPage schema on all tool pages | Session 3 |
-| BreadcrumbList schema on all tool pages | Session 3 |
-| GA4 tracking script | Add once cookie consent built |
-| llms.txt | Add in Session 3 |
-| WebSite schema on index.html | Session 3 |
-| Sitemap YOURDOMAIN replaced | Update when domain purchased |
-| Make repo public | Required for GitHub Pages (check: Settings, Danger Zone) |
-| Enable GitHub Pages | Settings, Pages, main, root, Save |
+| contact.html Formspree endpoint | Replace YOUR_FORM_ID before go-live |
+| Cookie consent banner | Pending - needs GA + AdSense IDs |
+| GA4 tracking script | Pending - needs measurement ID |
+| `ads.txt` | Pending - needs AdSense publisher ID |
+| Privacy policy | Update once AdSense publisher ID confirmed |
+| FAQPage schema | Not yet added - high SEO priority |
+| BreadcrumbList schema | Not yet added |
+| `llms.txt` | Not yet created |
 
 ---
 
-## 8. Rate Sources and Annual Maintenance
+## 11. Annual Rate Updates (each April)
 
-Update each April when new rates are announced:
+Update in `utils.js` first, then individual pages:
+- Corporation tax rates and marginal relief thresholds
+- Employer NI rate and secondary threshold
+- Employment Allowance
+- Auto-enrolment qualifying earnings band
+- National Living Wage / National Minimum Wage rates
+- Statutory pay rates (SMP, SSP, SPP)
+- VAT registration and deregistration thresholds
+- Business mileage HMRC rates (45p/25p/24p)
+- Capital allowances AIA limit
 
-| File | What to check |
-|------|---------------|
-| `utils.js` | All rate constants at top of each section |
-| `corporation-tax-calculator.html` | CT rates and thresholds (stable until further notice) |
-| `business-mileage-calculator.html` | HMRC approved mileage rates |
-| `vat-calculator.html` | VAT registration threshold (currently 90,000) |
-| `flat-rate-scheme-calculator.html` | FRS percentages by sector |
-| `statutory-pay-calculator.html` | SSP, SMP, SPP weekly rates |
-| `national-living-wage-checker.html` | NLW/NMW rates (April each year) |
-| `director-loan-calculator.html` | HMRC official interest rate (check quarterly) |
-| `mtd-checker.html` | MTD income thresholds (expanding 2026, 2027, 2028) |
-| `companies-house-deadlines.html` | Companies House filing fees |
-| `utils.js: LatePayment.BOE_BASE_RATE` | Bank of England base rate (check quarterly) |
+**Sources:** gov.uk, hmrc.gov.uk, thepensionsregulator.gov.uk
 
 ---
 
-## 9. Calculation Verification
+## 12. Rate Sources
 
-Run these checks to confirm accuracy before any deployment:
-
-**Corporation tax**
-- Profit 40,000 -> CT = 7,600 (19%)
-- Profit 100,000 -> CT = approx 22,750 (marginal relief)
-- Profit 300,000 -> CT = 75,000 (25%)
-
-**Mileage**
-- 12,000 miles car -> (10,000 x 0.45) + (2,000 x 0.25) = 5,000
-
-**VAT**
-- 1,200 inc VAT at 20% -> net 1,000, VAT 200
-- 1,000 exc VAT at 20% -> gross 1,200, VAT 200
-
-**Companies House deadlines**
-- Incorporated 1 Jan 2024, year-end 31 Jan 2025 -> first accounts due 1 Oct 2025
-
-**Break-even**
-- Fixed costs 10,000, variable cost 15, selling price 40 -> contribution 25, break-even 400 units, revenue 16,000
-
----
-
-## 10. AdSense Notes
-
-- B2B/SME advertisers are the highest RPM bracket in UK digital advertising
-- Target RPM: 15 to 40 GBP per thousand impressions
-- Invoice generator and Companies House tools especially attractive to business banking and accountancy software advertisers
-- Apply for AdSense immediately after MVP is live and indexed
-- Never click your own ads. A ban is permanent.
-- Note: Publishers are reporting RPM pressure in early 2026 from Google AI Overviews. Monitor but proceed.
-
----
-
-## 11. Session History
-
-| Session | Date | What was done |
-|---------|------|---------------|
-| Session 1 (laptop) | April 2025 | Design confirmed (Option C), global files, homepage, Groups 3 and 4 (CT, Ltd costs, sole trader vs Ltd, VAT calculator, invoice generator) |
-| Session 1 (continued, phone) | April 2025 | Groups 5 and 6 (CH deadlines, MTD checker, break-even, profit margin), supporting pages, config files, README |
-| Session 2 (phone) | April 2025 | All 9 remaining tools (mileage, capital allowances, VAT return, FRS, late filing penalty, business structure guide, statutory pay, NLW checker, director loan), sitemap updated to all 18 tools, README updated |
+| Data type | Source |
+|-----------|--------|
+| Corporation tax | https://www.gov.uk/corporation-tax-rates |
+| Employer NI | https://www.gov.uk/employers-national-insurance |
+| Employment Allowance | https://www.gov.uk/claim-employment-allowance |
+| VAT threshold | https://www.gov.uk/vat-registration/when-to-register |
+| National Living Wage | https://www.gov.uk/national-minimum-wage-rates |
+| Mileage rates | https://www.gov.uk/expenses-and-benefits-business-travel-mileage |
+| Statutory pay | https://www.gov.uk/maternity-pay-leave/pay |
+| Capital allowances | https://www.gov.uk/capital-allowances |
+| Companies House deadlines | https://www.gov.uk/file-your-company-annual-accounts |
+| Late filing penalties | https://www.gov.uk/annual-accounts/penalties |
