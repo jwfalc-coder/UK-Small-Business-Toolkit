@@ -55,8 +55,8 @@
       <div class="content-main">
         <div class="card">
           <div class="card-title">Send us a message</div>
-          <!-- Formspree endpoint: replace YOUR_FORM_ID once issued -->
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+          <!-- Formspree form -->
+          <form action="https://formspree.io/f/xwvaovlg" method="POST" id="contact-form">
             <div class="form-group">
               <label class="form-label" for="contact-name">Your name</label>
               <input type="text" id="contact-name" name="name" class="form-input" placeholder="Jane Smith" required>
@@ -158,12 +158,32 @@
 <script src="utils.js"></script>
 <script>
   document.getElementById('contact-form').addEventListener('submit', function(e) {
-    const action = this.action;
-    if (action.includes('YOUR_FORM_ID')) {
-      e.preventDefault();
-      alert('Contact form not yet configured. Please add the Formspree endpoint.');
-      return;
-    }
+    e.preventDefault();
+    var form = this;
+    var btn = form.querySelector('[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('https://formspree.io/f/xwvaovlg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        var success = document.getElementById('form-success');
+        if (success) success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        alert('Something went wrong. Please email hello@smallbusinesstoolkit.uk directly.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      alert('Something went wrong. Please email hello@smallbusinesstoolkit.uk directly.');
+    });
   });
 </script>
 </body>
