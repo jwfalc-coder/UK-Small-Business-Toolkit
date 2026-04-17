@@ -31,7 +31,7 @@ UK Small Business Toolkit is a free multi-page platform of tools for UK limited 
 
 ## 3. Design System (Confirmed: Option C - Modern B2B Product)
 
-Do not change the design without explicit instruction from Josh.
+Do not change the design without explicit instruction from the site owner.
 
 | Token | Value |
 |-------|-------|
