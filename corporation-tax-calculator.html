@@ -103,6 +103,26 @@
   "inLanguage": "en-GB"
 }
 </script>
+<!-- GA4 consent-gated loader -->
+<script>
+(function(){
+  function loadGA(){
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-MR0P3D6N1W';
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config','G-MR0P3D6N1W');
+  }
+  try{
+    if(localStorage.getItem('sbt-cookie')==='accepted'){loadGA();}
+  }catch(e){}
+  window.__sbtLoadGA=loadGA;
+})();
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -463,6 +483,44 @@ function renderChart(currentProfit) {
     }
   });
 }
+</script>
+<!-- Cookie consent banner -->
+<div id="sbt-banner" style="display:none" role="dialog" aria-label="Cookie consent">
+<style>
+#sbt-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:16px 20px;background:#fff;border-top:2px solid #e2e8f0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;font-size:0.85rem;color:#334155;box-shadow:0 -4px 24px rgba(0,0,0,0.08)}
+#sbt-banner p{margin:0;flex:1;min-width:200px;line-height:1.5}
+#sbt-banner a{color:#d97706;text-decoration:none}
+#sbt-banner a:hover{text-decoration:underline}
+.sbt-btns{display:flex;gap:8px;flex-shrink:0}
+.sbt-btn{padding:8px 20px;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:opacity 0.15s}
+.sbt-btn-accept{background:#d97706;color:#fff}
+.sbt-btn-accept:hover{opacity:0.88}
+.sbt-btn-decline{background:transparent;color:#64748b;border:1px solid #e2e8f0}
+.sbt-btn-decline:hover{color:#0f172a;border-color:#cbd5e1}
+@media(max-width:480px){#sbt-banner{padding:14px 16px}.sbt-btns{width:100%}.sbt-btn{flex:1;text-align:center}}
+</style>
+<p>We use cookies to understand how people use UK Small Business Toolkit via Google Analytics. No personal data is sold or shared. <a href="/privacy.html">Privacy policy</a></p>
+<div class="sbt-btns">
+  <button class="sbt-btn sbt-btn-decline" id="sbt-decline">Decline</button>
+  <button class="sbt-btn sbt-btn-accept" id="sbt-accept">Accept</button>
+</div>
+</div>
+<script>
+(function(){
+  try{
+    var pref=localStorage.getItem('sbt-cookie');
+    if(!pref){document.getElementById('sbt-banner').style.display='flex';}
+    document.getElementById('sbt-accept').addEventListener('click',function(){
+      localStorage.setItem('sbt-cookie','accepted');
+      document.getElementById('sbt-banner').style.display='none';
+      if(window.__sbtLoadGA)window.__sbtLoadGA();
+    });
+    document.getElementById('sbt-decline').addEventListener('click',function(){
+      localStorage.setItem('sbt-cookie','declined');
+      document.getElementById('sbt-banner').style.display='none';
+    });
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
