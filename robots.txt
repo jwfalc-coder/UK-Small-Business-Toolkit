@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOURDOMAIN/sitemap.xml
+Sitemap: https://smallbusinesstoolkit.uk/sitemap.xml
